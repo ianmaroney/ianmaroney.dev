@@ -1,0 +1,65 @@
+{
+  "path": "/experience",
+  "slug": "experience",
+  "title": "Experience",
+  "moduleGroups": [
+    {
+      "title": "History",
+      "modules": [
+        {
+          "type": "experience",
+          "hero": true,
+          "title": "History",
+          "heading": "Experience",
+          "content": "<p>I’ve worked in the creative industry since graduating from Canisius College oh so long ago, building technology backed experiences ever since. I’ve also used some of my spare time teaching web development and volunteering for a local organization of advertisers around Rochester, NY.</p>"
+        },
+        {
+          "type": "experience",
+          "hero": true,
+          "title": "Education",
+          "heading": "Education"
+        },
+        {
+          "type": "content-blocks",
+          "hero": true,
+          "title": "Technologies",
+          "heading": "Technologies",
+          "headingClass": "h1",
+          "content": "<p>Always tinkering, always throwing something new into the mix, and always refining my process. Below are some (but certainly not all) of the languages, frameworks, and platforms I’ve worked with recently:</p>",
+          "blocks": [
+            {
+              "title": "Favorite Frameworks",
+              "heading": "Favorite frameworks",
+              "content": "<ul class='none soft'><li>Next.js</li><li>React</li><li>Feathers JS</li>"
+            },
+            {
+              "title": "CMS and eCommerce",
+              "heading": "CMS & eCommerce",
+              "content": "<ul class='none soft'><li>WordPress</li><li>Shopify</li><li>BigCommerce</li>"
+            },
+            {
+              "title": "Measurement and CRM",
+              "heading": "Measurement & CRM",
+              "content": "<ul class='none soft'><li>SalesForce</li><li>HubSpot</li><li>Google Analytics</li>"
+            },
+            {
+              "title": "DevOps and Hosting",
+              "heading": "DevOps & hosting",
+              "content": "<ul class='none soft'><li>Amazon Web Services</li><li>Docker</li><li>MediaTemple</li>"
+            },
+            {
+              "title": "SASS-y platforms",
+              "heading": "SASS-y platforms",
+              "content": "<ul class='none soft'><li>Twilio</li><li>Stripe</li><li>MailChimp</li>"
+            },
+            {
+              "title": "Old Friends",
+              "heading": "Old friends",
+              "content": "<ul class='none soft'><li>jQuery</li><li>CodeIgniter</li>"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

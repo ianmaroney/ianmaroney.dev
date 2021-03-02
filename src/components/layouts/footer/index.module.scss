@@ -1,0 +1,19 @@
+@import "/src/styles/variables";
+@import "/src/styles/globals";
+@import "/src/styles/fg-variables";
+
+.footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    text-align: right;
+  }
+}

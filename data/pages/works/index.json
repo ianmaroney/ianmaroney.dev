@@ -1,0 +1,19 @@
+{
+  "path": "/works",
+  "slug": "works",
+  "title": "Works",
+  "moduleGroups": [
+    {
+      "title": "Works",
+      "modules": [
+        {
+          "type": "works",
+          "hero": true,
+          "title": "Selected Works",
+          "heading": "Selected works",
+          "content": "<p>While certainly not a complete list, here are some the projects I’m most proud of. This mix of web and experiential builds for a range of clients should give you an idea of what I’ve been up to over the last handful of years. Looking for more? <a href='/contact#form'>Drop me a line</a> and I can share a bit more.</p>"
+        }
+      ]
+    }
+  ]
+}

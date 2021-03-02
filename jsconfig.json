@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/config": ["next.config.js"],
+      "@/components/*": ["src/components/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/layouts/*": ["src/components/layouts/*"],
+      "@/modules/*": ["src/components/modules/*"],
+      "@/partials/*": ["src/components/partials/*"],
+      "@/templates/*": ["src/components/templates/*"],
+      "@/util": ["src/util"]
+    }
+  }
+}

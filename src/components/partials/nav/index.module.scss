@@ -1,0 +1,40 @@
+@import "/src/styles/variables";
+@import "/src/styles/globals";
+@import "/src/styles/fg-variables";
+
+.nav {
+  padding: 2rem;
+  background: transparentize($color-bg, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -5;
+  transition: opacity ($duration-transition * 1.5) $easing ($duration-transition * 0.5);
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  a {
+    font-weight: $font-weight-black;
+  }
+
+  :global(.navigating) & {
+    z-index: 1;
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity ($duration-transition * 1.5) $easing ($duration-transition * 1);
+  }
+}

@@ -1,0 +1,45 @@
+button {
+  padding: 0;
+  outline: 0;
+  border: 0;
+  -webkit-appearance: none;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+input.button {
+  outline: none;
+  // border: none;
+  appearance: none;
+}
+
+.button {
+  padding: ($size-margin * 0.5) ($size-margin * 1);
+  border: 1px solid $color-highlight;
+  background: $color-highlight;
+  color: $color-bg;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-align: center;
+  font-weight: $font-weight-semibold;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: color ($duration-transition * 1.5) $easing, background-color ($duration-transition * 1.5) $easing;
+
+  &:hover {
+    background: $color-highlight-alt;
+    border-color: $color-highlight-alt;
+  }
+
+  &.xl {
+    font-size: 1.5rem;
+  }
+
+  &.sm {
+    font-size: 0.75rem;
+    padding: ($size-margin * 0.75) ($size-margin * 1.25);
+  }
+}

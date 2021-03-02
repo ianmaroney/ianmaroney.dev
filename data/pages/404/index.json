@@ -1,0 +1,19 @@
+{
+  "path": "/404",
+  "slug": "404",
+  "title": "Page Not Found",
+  "moduleGroups": [
+    {
+      "title": "Page Not Found",
+      "modules": [
+        {
+          "type": "content",
+          "hero": true,
+          "title": "Page Not Found",
+          "heading": "Page not found",
+          "content": "<p>Sorry, the resource you’ve requested could not be found.</p>"
+        }
+      ]
+    }
+  ]
+}

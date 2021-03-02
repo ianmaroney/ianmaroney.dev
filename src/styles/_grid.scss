@@ -1,0 +1,410 @@
+// Grid.
+
+  .grid {
+    width: calc(100% + #{$fg_spacing * 2});
+    margin-left: ($fg_spacing * -1);
+    margin-right: ($fg_spacing * -1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    &._forward {
+      flex-direction: row;
+    }
+
+    &._reverse {
+      flex-direction: row-reverse;
+    }
+
+    // Grid Cell Padding
+
+    &._0x {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+
+      > .cell {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    &._0-5x {
+      width: calc(100% + 1em);
+      margin-left: -0.5em;
+      margin-right: -0.5em;
+
+      > .cell {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+    }
+
+    @for $i from 1 through $fg_multipliers {
+      &._#{$i}x {
+        width: calc(100% + #{$fg_spacing * $i * 2});
+        margin-left: ($fg_spacing * -$i);
+        margin-right: ($fg_spacing * -$i);
+
+        > .cell {
+          padding-left: ($fg_spacing * $i);
+          padding-right: ($fg_spacing * $i);
+        }
+      }
+    }
+
+    // Grid Cell Vertical Alignment
+
+    &._vt {
+      align-items: flex-start;
+    }
+
+    &._vc {
+      align-items: center;
+    }
+
+    &._vb {
+      align-items: flex-end;
+    }
+
+    &._vs {
+      align-items: stretch;
+    }
+
+    // Grid Cell Horizontal Alignment
+
+    &._hl {
+      justify-content: flex-start;
+    }
+
+    &._hc {
+      justify-content: center;
+    }
+
+    &._hr {
+      justify-content: flex-end;
+    }
+
+    &._hb {
+      justify-content: space-between;
+    }
+
+    &._ha {
+      justify-content: space-around;
+    }
+
+    // Responsive Cell Styles
+
+    @for $s from 1 through length($fg_sizes) {
+      @include breakpoint(nth($fg_breakpoints, $s)) {
+        // Responsive Grid Cell Padding
+
+        &.#{nth($fg_sizes, $s)}_0x {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+
+          > .cell {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+
+        @for $i from 1 through $fg_multipliers {
+          &.#{nth($fg_sizes, $s)}_#{$i}x {
+            width: calc(100% + #{$fg_spacing * $i * 2});
+            margin-left: ($fg_spacing * -$i);
+            margin-right: ($fg_spacing * -$i);
+
+            > .cell {
+              padding-left: ($fg_spacing * $i);
+              padding-right: ($fg_spacing * $i);
+            }
+          }
+        }
+
+        &.#{nth($fg_sizes, $s)}_forward {
+          flex-direction: row;
+        }
+
+        &.#{nth($fg_sizes, $s)}_reverse {
+          flex-direction: row-reverse;
+        }
+
+        // Responsive Grid Cell Vertical Alignment
+
+        &.#{nth($fg_sizes, $s)}_vt {
+          align-items: flex-start;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vc {
+          align-items: center;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vb {
+          align-items: flex-end;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vs {
+          align-items: stretch;
+        }
+
+        // Responsive Grid Cell Horizontal Alignment
+
+        &.#{nth($fg_sizes, $s)}_hl {
+          justify-content: flex-start;
+        }
+
+        &.#{nth($fg_sizes, $s)}_hc {
+          justify-content: center;
+        }
+
+        &.#{nth($fg_sizes, $s)}_hr {
+          justify-content: flex-end;
+        }
+
+        &.#{nth($fg_sizes, $s)}_hb {
+          justify-content: space-between;
+        }
+
+        &.#{nth($fg_sizes, $s)}_ha {
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+
+// Cell
+
+  .cell {
+    padding-left: $fg_spacing;
+    padding-right: $fg_spacing;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    // Cell Padding
+
+    &._0x {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @for $i from 1 through $fg_multipliers {
+      &._#{$i}x {
+        padding-left: ($fg_spacing * $i);
+        padding-right: ($fg_spacing * $i);
+      }
+    }
+
+    // Cell Size
+
+    &._fill {
+      width: 0;
+      min-width: 0;
+      flex-grow: 1;
+    }
+
+    @for $i from 1 through ($fg_columns - 1) {
+      $width: 100% * ($i / $fg_columns);
+
+      &._#{$i} {
+        width: calc(100% * #{$i} / #{$fg_columns});
+      }
+    }
+
+    &._#{$fg_columns} {
+      width: 100%;
+    }
+
+    // Cell Vertical Spacing
+
+    @for $i from 1 through $fg_multipliers {
+      &._#{$i}up {
+        margin-top: -#{$fg_spacing * $i};
+      }
+
+      &._#{$i}down {
+        margin-top: #{$fg_spacing * $i};
+      }
+    }
+
+    // Cell Horizontal Spacing
+
+    @for $i from 1 through ($fg_columns - 1) {
+      $width: 100% * ($i / $fg_columns);
+
+      &._#{$i}l {
+        margin-left: calc(100% * #{$i} / #{$fg_columns});
+      }
+
+      &._#{$i}r {
+        margin-right: calc(100% * #{$i} / #{$fg_columns});
+      }
+    }
+
+    // Cell Vertical Alignment
+
+    &._vt {
+      align-self: flex-start;
+    }
+
+    &._vc {
+      align-self: center;
+    }
+
+    &._vb {
+      align-self: flex-end;
+    }
+
+    &._vs {
+      align-self: stretch;
+    }
+
+    // Cell Horizontal Alignment
+
+    &._hl {
+      margin-right: auto;
+    }
+
+    &._hc {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &._hr {
+      margin-left: auto;
+    }
+
+    // Cell Order
+
+    &._first {
+      order: -999;
+    }
+
+    &._last {
+      order: 999;
+    }
+
+    // Responsive Cell Styles
+
+    @for $s from 1 through length($fg_sizes) {
+      @include breakpoint(nth($fg_breakpoints, $s)) {
+
+        @for $i from 1 through $fg_multipliers {
+          &.#{nth($fg_sizes, $s)}_#{$i}x {
+            padding-left: ($fg_spacing * $i);
+            padding-right: ($fg_spacing * $i);
+          }
+        }
+
+        // Responsive Cell Size
+
+        &.#{nth($fg_sizes, $s)}_fill {
+          width: 0;
+          min-width: 0;
+          flex-grow: 1;
+        }
+
+        @for $i from 1 through ($fg_columns - 1) {
+          $width: 100% * ($i / $fg_columns);
+
+          &.#{nth($fg_sizes, $s)}_#{$i} {
+            width: calc(100% * #{$i} / #{$fg_columns});
+          }
+        }
+
+        &.#{nth($fg_sizes, $s)}_#{$fg_columns} {
+          width: 100%;
+        }
+
+        // Responsive Cell Vertical Spacing
+
+        @for $i from 0 through $fg_multipliers {
+          &.#{nth($fg_sizes, $s)}_#{$i}up {
+            @if ($i > 0) {
+              margin-top: -#{$fg_spacing * $i};
+            } @else {
+              margin-top: 0;
+            }
+          }
+
+          &.#{nth($fg_sizes, $s)}_#{$i}down {
+            @if ($i > 0) {
+              margin-top: #{$fg_spacing * $i};
+            } @else {
+              margin-top: 0;
+            }
+          }
+        }
+
+        // Responsive Cell Horizontal Spacing
+
+        &.#{nth($fg_sizes, $s)}_0l {
+          margin-left: 0;
+        }
+
+        &.#{nth($fg_sizes, $s)}_0r {
+          margin-right: 0;
+        }
+
+        @for $i from 1 through ($fg_columns - 1) {
+          $width: 100% * ($i / $fg_columns);
+
+          &.#{nth($fg_sizes, $s)}_#{$i}l {
+            margin-left: calc(100% * #{$i} / #{$fg_columns});
+          }
+
+          &.#{nth($fg_sizes, $s)}_#{$i}r {
+            margin-right: calc(100% * #{$i} / #{$fg_columns});
+          }
+        }
+
+        // Cell Vertical Alignment
+
+        &.#{nth($fg_sizes, $s)}_vt {
+          align-self: flex-start;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vc {
+          align-self: center;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vb {
+          align-self: flex-end;
+        }
+
+        &.#{nth($fg_sizes, $s)}_vs {
+          align-self: stretch;
+        }
+
+        // Cell Horizontal Alignment
+
+        &.#{nth($fg_sizes, $s)}_hl {
+          margin-right: auto;
+        }
+
+        &.#{nth($fg_sizes, $s)}_hc {
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        &.#{nth($fg_sizes, $s)}_hr {
+          margin-left: auto;
+        }
+
+        // Cell Order
+
+        &.#{nth($fg_sizes, $s)}_first {
+          order: -999;
+        }
+
+        &.#{nth($fg_sizes, $s)}_og {
+          order: initial;
+        }
+
+        &.#{nth($fg_sizes, $s)}_last {
+          order: 999;
+        }
+      }
+    }
+  }

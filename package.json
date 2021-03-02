@@ -1,0 +1,29 @@
+{
+  "name": "ianmaroney-dev",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "clean": "del ./.next && del ./out",
+    "dev": "next dev",
+    "export": "npm run clean && next build && next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "emailjs-com": "^2.6.4",
+    "html-react-parser": "^1.2.4",
+    "next": "10.0.7",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-hook-form": "^6.15.4",
+    "sass": "^1.32.8",
+    "xss": "^1.0.8"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.2",
+    "del-cli": "^3.0.1",
+    "fs": "^0.0.1-security",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^6.7.0"
+  }
+}

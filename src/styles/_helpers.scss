@@ -1,0 +1,236 @@
+// Helpers
+
+  /*! purgecss start ignore */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+  .clearfix {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .clear-left {
+    clear: left;
+  }
+
+  .clear-right {
+    clear: right;
+  }
+
+  .fit {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .max-480 {
+    width: 100%;
+    height: auto;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .placeholder {
+    width: 100%;
+    background: transparent;
+    pointer-events: none;
+    height: auto;
+    display: block;
+  }
+
+  .fit-h {
+    width: auto;
+    max-height: 100%;
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .table {
+    display: table;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .fixed {
+    position: fixed;
+  }
+
+  .align-right {
+    text-align: right;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .pull-none {
+    float: none;
+  }
+
+  @for $s from 1 through length($sizes) {
+    @include breakpoint(nth($breakpoints, $s)) {
+      .#{nth($sizes, $s)}_fit {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        display: block;
+      }
+
+      .#{nth($sizes, $s)}_fit-h {
+        width: auto;
+        max-width: none;
+        max-height: 100%;
+        margin: 0;
+        display: block;
+      }
+
+      .#{nth($sizes, $s)}_hidden {
+        display: none;
+      }
+
+      .#{nth($sizes, $s)}_initial {
+        display: initial;
+      }
+
+      .#{nth($sizes, $s)}_inline {
+        display: inline;
+      }
+
+      .#{nth($sizes, $s)}_inline-block {
+        display: inline-block;
+      }
+
+      .#{nth($sizes, $s)}_flex {
+        display: flex;
+      }
+
+      .#{nth($sizes, $s)}_table {
+        display: table;
+      }
+
+      .#{nth($sizes, $s)}_block {
+        display: block;
+      }
+
+      .#{nth($sizes, $s)}_absolute {
+        position: absolute;
+      }
+
+      .#{nth($sizes, $s)}_relative {
+        position: relative;
+      }
+
+      .#{nth($sizes, $s)}_fixed {
+        position: fixed;
+      }
+
+      .#{nth($sizes, $s)}_align-left {
+        text-align: left;
+      }
+
+      .#{nth($sizes, $s)}_align-center {
+        text-align: center;
+      }
+
+      .#{nth($sizes, $s)}_align-right {
+        text-align: right;
+      }
+
+      .#{nth($sizes, $s)}_pull-left {
+        float: left;
+      }
+
+      .#{nth($sizes, $s)}_pull-right {
+        float: right;
+      }
+
+      .#{nth($sizes, $s)}_pull-none {
+        float: none;
+      }
+
+      .#{nth($sizes, $s)}_sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+      }
+
+      .#{nth($sizes, $s)}_sr-only-reset {
+        position: initial;
+        width: initial;
+        height: initial;
+        padding: initial;
+        margin: initial;
+        overflow: initial;
+        clip: initial;
+      }
+
+      .#{nth($sizes, $s)}_clear-left {
+        clear: left;
+      }
+
+      .#{nth($sizes, $s)}_clear-right {
+        clear: right;
+      }
+    }
+  }
+  /*! purgecss end ignore */

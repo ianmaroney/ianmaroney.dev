@@ -1,0 +1,22 @@
+{
+  "titleExtras": [
+    "Developer, DevOps Engineer, and Brand Experience Creator"
+  ],
+  "connections": [
+    {
+      "title": "Experience",
+      "heading": "My experience",
+      "content": "<p>Where I’ve worked over the years and some of my favorite tools to work with.</p>"
+    },
+    {
+      "title": "Contact",
+      "heading": "How to find me",
+      "content": "<p>Looking to chat? Anything more you’d like to know? Drop me a line any time.</p>"
+    },
+    {
+      "title": "Works",
+      "heading": "My work",
+      "content": "<p>Some work I’m particularly proud of and some of the brands I’ve worked with along the way.</p>"
+    }
+  ]
+}

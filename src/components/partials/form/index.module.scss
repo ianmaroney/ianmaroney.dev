@@ -1,0 +1,89 @@
+@import "/src/styles/variables";
+@import "/src/styles/globals";
+@import "/src/styles/fg-variables";
+
+.outcome {
+  max-width: 40rem;
+  margin: 2rem auto 0;
+
+  :global(.error) {
+    color: #ff6961;
+  }
+}
+
+.form {
+  max-width: 40rem;
+  margin: 2rem auto 0;
+
+  fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  legend {
+    padding: 0;
+    margin: 0 0 -1rem;
+    font-weight: $font-weight-black;
+  }
+
+  :global(.field) {
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  label {
+    padding: 0.5em 0.75em;
+    margin: 1px;
+    font-size: 1em;
+    font-weight: $font-weight-semibold;
+    line-height: 1.5;
+    color: $color-soft;
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transition: color ($duration-transition * 1) $easing;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 65%;
+      background: $color-bg;
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 0.5em 0.75em;
+    margin: 0;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: $font-weight-semibold;
+    line-height: 1.5;
+    color: $color-strong;
+    outline: none;
+    appearance: none;
+    transition: border-color ($duration-transition * 1) $easing;
+
+    &:focus,
+    &:global(.filled) {
+      border-color: transparentize($color-highlight, 0.25);
+
+      + label {
+        color: $color-highlight;
+        transform: scale(0.75) translate(0.25em, -55%);
+        transform-origin: 1px 1px;
+      }
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}

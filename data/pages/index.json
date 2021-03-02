@@ -1,0 +1,19 @@
+{
+  "path": "/",
+  "slug": "home",
+  "title": "Ian Maroney",
+  "moduleGroups": [
+    {
+      "title": "Introduction",
+      "modules": [
+        {
+          "type": "content",
+          "hero": true,
+          "title": "Intro",
+          "heading": "Hey, I’m Ian!<small> A Developer, DevOps engineer, and brand experience creator from Rochester, NY.</small>",
+          "content": "<p>Deeply curious, mildly obsessive, and openly anxious; I’ve been helping to create code-backed brand experiences on and off the web for years. Check out some of my <a href='/works'>selected works</a>.</p><p>I chase work that presents a problem to be solved or a facet I can make measurably improved with technology. While I have favorite tools in my bag of tricks, I have experience with a wide range of creative technologies. Have a look at <a href='/experience#history'>my working history</a> or <a href='/experience#technologies'>some of the tech</a> I routinely put to work for brands if you're interested in a bit more detail.</p><p>Anything else you would like to know about me? <a href='/contact#form'>Drop me a line</a> and I’ll most likely respond with an email packed with bulleted lists.</p>"
+        }
+      ]
+    }
+  ]
+}

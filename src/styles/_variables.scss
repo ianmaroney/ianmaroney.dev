@@ -1,0 +1,101 @@
+// Breakpoints
+$breakpoint-var:            'min-width';
+$breakpoint-reverse:        'max-width';
+$breakpoint-measure:        px;
+$breakpoint-xs:             375;
+$breakpoint-xssm:           414;
+$breakpoint-sm:             480;
+$breakpoint-smmd:           568;
+$breakpoint-md:             760;
+$breakpoint-mdlg:           900;
+$breakpoint-lg:             1024;
+$breakpoint-xl:             1240;
+
+$sizes:                     xs xssm sm smmd md mdlg lg xl;
+$breakpoints:               $breakpoint-xs $breakpoint-xssm $breakpoint-sm $breakpoint-smmd $breakpoint-md $breakpoint-mdlg $breakpoint-lg $breakpoint-xl;
+
+// Colors
+  // Primary
+  $color-primary:           #777;
+  $color-strong:            #333;
+  $color-bg:                #fff;
+  $color-highlight:         #1a73e8;
+  $color-highlight-alt:     #174ea6;
+  $color-soft:              #999;
+
+  // Inverse
+  $color-inverse-primary:   #999;
+  $color-inverse-bg:        #333;
+  $color-inverse-highlight: #1a73e8;
+  $color-inverse-soft:      #777;
+
+  // Alterations
+  $color-lighten:           25%;
+  $color-darken:            25%;
+  $color-alpha:             0.25;
+
+// Fonts
+  // Stacks
+  $font-family:             'Nunito Sans', sans-serif;
+
+  // Weights
+  $font-weight:             300;
+  $font-weight-semibold:    600;
+  $font-weight-black:       900;
+
+  // Bases
+  $base:                    12px;
+  $base-lg:                 16px;
+
+  // Size
+  $font-size:               1.3333333333333rem; // 16
+  $font-size-lg:            1.125rem; // 18
+
+  $font-size-lead:          1.5rem; // 18
+  $font-size-lead-lg:       1.375rem; // 20
+
+  $font-size-h1:            2.5rem; // 30
+  $font-size-h1-lg:         3.125rem; // 50
+
+  $font-size-h2:            2rem; // 24
+  $font-size-h2-lg:         1.625rem; // 28
+
+  $font-size-h3:            1.25rem; // 20
+  $font-size-h3-lg:         1.25rem; // 24
+
+  $font-size-blockquote:    1.666666666666rem; // 20
+  $font-size-blockquote-lg: 1.375rem; // 22
+
+  $font-size-label:         1.3333333333333rem; // 16
+  $font-size-label-lg:      1.125rem; // 18
+
+  $font-size-input:         1.666666666666rem; // 20
+  $font-size-input-lg:      1.5rem; // 24
+
+  // Line height
+  $line-height:             1.5;
+  $line-height-lead:        1.5;
+  $line-height-h1:          1.125;
+  $line-height-h2:          1.25;
+  $line-height-h3:          1;
+  $line-height-h4:          1;
+  $line-height-blockquote:  1.5;
+  $line-height-label:       1.2222222222;
+  $line-height-input:       1.0833333333;
+
+// Borders
+$size-border-radius:        4px;
+$size-border-width:         2px;
+$size-border-width-extra:   5px;
+
+// Spacing
+$size-margin:               1em;
+
+// Grid
+$columns:                   12;
+
+// Timing
+$duration-transition:       0.25s;
+
+// Easeing
+$easing:                    ease-in-out;

@@ -1,0 +1,73 @@
+@import "/src/styles/variables";
+@import "/src/styles/globals";
+@import "/src/styles/fg-variables";
+
+.header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 3;
+
+  > a {
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    color: $color-strong;
+    display: flex;
+    position: relative;
+    z-index: 5;
+    align-items: baseline;
+  }
+}
+
+.toggle {
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  display: block;
+  position: relative;
+  z-index: 5;
+
+  :global(.bar) {
+    width: calc(100% - 0.25rem);
+    height: 2px;
+    margin-top: -0.25rem;
+    background: $color-soft;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    backface-visibility: hidden;
+    transition: transform ($duration-transition * 1) $easing, margin-top ($duration-transition * 1) $easing ($duration-transition * 1), background-color ($duration-transition * 2) $easing;
+
+    + span {
+      margin-top: 0.25rem;
+    }
+  }
+
+  &:hover {
+    :global(.bar) {
+      background-color: $color-highlight;
+      transition: transform ($duration-transition * 1) $easing, margin-top ($duration-transition * 1) $easing ($duration-transition * 1), background-color ($duration-transition * 2) $easing;
+    }
+  }
+
+  :global(.navigating) & {
+    :global(.bar) {
+      margin-top: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: transform ($duration-transition * 1) $easing ($duration-transition * 1), margin-top ($duration-transition * 1) $easing, background-color ($duration-transition * 2) $easing;
+
+      + span {
+        margin-top: 0;
+        margin-left: 0;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
+}

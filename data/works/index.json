@@ -1,0 +1,93 @@
+{
+  "works": [
+    {
+      "client": "Fannie Mae",
+      "project": "Campaign Website",
+      "hidden": true,
+      "links": [
+        {
+          "title": "Campaign Website",
+          "label": "View demo",
+          "url": "https://truthcollective.works/homeownership/kyo/"
+        }
+      ],
+      "content": "<p>Fannie Mae approached Truth Collective, looking for a way to educate the public on the homebuying process in a way would allow people to learn at their own pace, on the go, and without the need for any password-protected gatekeeping.</p><p>We took on the task of writing <em>the</em> book on the process, broke it up into bite-sized pieces, and built in a little fun with quizzes, interactive calculators, video content, and downloadable checklists for when prospective homebuyers start the process out in the world; All machine-translated into 109 languages.</p><p>For my role, I chose a headless WordPress back-end for content management and next.js for a nimble front-end build. The output of that build was designed be exported as a single package and integrated into our clients Drupal environment, allowing for future edits by our clients web teams.</p><h3>Noteworthy features</h3><ul><li>Build process outputs a static website; Capable of being deployed anywhere a typical HTML website can be hosted.</li><li>Content is translated at build-time, and only when it has been updated; Saving clients translations costs and visitors wait-times for translations.</li><li>Code-splitting and pre-loading from next.js allows for snappy load times and seamless transitions between pages.</li><li>An automatic glossary term highlighter puts the spotlight on language that may not be familiar to visitors, allowing them to click to expand a pop-over glossary with the definition of the term.</li><li>Module-based content management means that sections can be quickly edited, reordered, added, or removed.</li></ul>"
+    },
+    {
+      "client": "Truth Collective",
+      "project": "Brand Website",
+      "links": [
+        {
+          "title": "Brand Website",
+          "label": "truthcollective.com",
+          "url": "https://truthcollective.com/"
+        }
+      ],
+      "content": "<p>When the time came to build Truth Collective a fresh website, we knew we wanted flexibility, speed, and the opportunity to try out some new tech.</p><p>As the first project in our new AWS infrastructure, we chose to build the website using a headless instance of WordPress to manage content with a custom React front-end. WordPress and the React front-end are run within docker containers within a shared EC2 instance, each kept safe from traffic spikes and geographic latency behind distributed CloudFront proxy-layers.</p><p>A plethora of CSS animations, modular page layouts, and a conversational contact form keep the site feeling fresh, fun, and engaging.</p><p>The react front-end caches content from the WordPress REST API to keep load-times fast and resource usage on the server low.</p><h3>Noteworthy features</h3><ul><li>Cached, server-rendered pages result in quick load times and a strong base for search engine optimization.</li><li>Animated page transitions, scroll-activated reveals, and plenty of modular content types keep the site feeling engaging.</li><li>A WordPress back-end fueled by custom post types and custom fields means that content editors don’t need to write code to make additions or updates to the content.</li></ul>"
+    },
+    {
+      "client": "Willow Domestic Violence Center",
+      "project": "Teen Dating Violence campaign landing page and SMS experience",
+      "links": [
+        {
+          "title": "Campaign microsite",
+          "label": "zerodatingviolence.org",
+          "url": "https://zerodatingviolence.org/"
+        },
+        {
+          "title": "Campaign SMS experience",
+          "label": "+1 (585) 294-0020",
+          "url": "tel:+15852940020"
+        }
+      ],
+      "content": "<p>Willow Domestic Violence Center came to Truth Collective, looking for help kick-starting a campaign for Teen Dating Violence Awareness Month. We knew that we would have to reach out to their audience where they spend their time; On their phones.</p><p>Social media content drove visitors to a campaign landing page outfitted with glitchy web animations, quick-hit social media style videos, and emoji-based polling to catch quick-hit reactions.</p><p>To help drive home the reality of what was often described as a non-issue by teens, we crafted an SMS-based multi-day experience to simulate a relationship that shifts from happy and healthy to abusive and dangerous. Students would sign up via text message and receive scripted messages with simple multiple-choice responses over the span of several days. By the end of the experience their digital partner had grown controlling, abusive, and threatening; Illustrating how important it can be to watch out for red flags in a partner.</p><h3>Noteworthy features</h3><ul><li>Landing page filled with code-glitched imagery, social media style videos, and emoji reaction polls.</li><li>SMS experience utilized the Twilio API. Pooled phone numbers are scaled up based on user base.</li><li>Back-end utilizes Feathers JS and MongoDB to track progress.</ul>"
+    },
+    {
+      "client": "OneSight",
+      "project": "Brand Website & Fundraising Portal",
+      "links": [
+        {
+          "title": "Brand Website",
+          "label": "onesight.org",
+          "url": "https://onesight.org"
+        },
+        {
+          "title": "Fundraising Portal",
+          "label": "my.onesight.org",
+          "url": "https://my.onesight.org/"
+        }
+      ],
+      "content": "<p>Truth Collective’s client OneSight, a global vision nonprofit, was looking for an overhaul of their digital ecosystem. At their request and within the boundaries of their existing infrastructure, we designed and built a new WordPress website; Offering more modular building blocks to shape content. We also improved the connections to their payment processor, Stripe and their CRM platform, Salesforce.</p><p>We worked with a partner to improve their fundraising platform, built with Ruby on Rails; Making design improvements, user experience enhancements, and bolstering of existing functionality.</p>"
+    },
+    {
+      "client": "Optic Sky Productions",
+      "project": "Brand Website",
+      "link": "https://opticskypro.com/",
+      "links": [
+        {
+          "title": "Brand Website",
+          "label": "opticskypro.com",
+          "url": "https://opticskypro.com/"
+        }
+      ],
+      "content": "<p>Truth Collective’s friends at Optic Sky Productions wanted a new website after we developed their new visual identity. To fit their brand’s (and team’s) personality we opted for a fluid, multilayered, visually driven experience with plenty of touches of code-driven animation.</p><p>To ensure their ongoing ability to add and update content wouldn’t be hindered, we build the website with WordPress. Ensuring no one on their team would have to write code when making changes.</p>"
+    },
+    {
+      "client": "Rochester Fringe Festival",
+      "project": "Brand Website & Festival Infrastructure",
+      "links": [
+        {
+          "title": "Brand Website",
+          "label": "rochesterfringe.com",
+          "url": "https://rochesterfringe.com/"
+        },
+        {
+          "title": "Festival Infrastructure",
+          "label": "backstage.rochesterfringe.com",
+          "url": "https://backstage.rochesterfringe.com/"
+        }
+      ],
+      "content": "<p>The Rochester Fringe Festival came to Makeway looking for an easier way to manage the application, booking, scheduling, and ticketing processes for their 10-day festival in downtown Rochester. Their year-one WordPress solution was incredibly tedious, and put the burden of matching performers with venues on their shoulders.</p><p>To make sure that no party (performer or venue) had an unfair advantage in negotiations, we created a platform that kept details transparent and informative throughout the process, allowing the festival organizers to peek in and make use of performance data to create tickets, keep an up-to-date schedule accessible to the public, and handle the throngs of traffic that would hit the site come festival season.</p><p>Built with the PHP framework CodeIgniter, our back-end platform and front-end website were built to handle large volumes of both data and traffic. The platform and website offered sponsorship and advertising opportunities, maps to venues, and a filtering system for festival-goers to find the right show.</p>"
+    }
+  ]
+}

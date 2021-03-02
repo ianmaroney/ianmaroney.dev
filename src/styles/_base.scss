@@ -1,0 +1,64 @@
+// Base styles
+
+  *, *:before, *:after {
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+
+  /*! purgecss start ignore */
+  html, body, input, select, textarea {
+    font-size: $base;
+    font-family: $font-family;
+    line-height: $line-height;
+    border-radius: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @include breakpoint($breakpoint-md) {
+      font-size: $base-lg;
+      line-height: $line-height;
+    }
+  }
+
+  body {
+    min-width: 320px;
+    background: $color-bg;
+    color: $color-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+  }
+
+  a {
+    color: $color-highlight;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+    transition: color ($duration-transition * 1) $easing;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-highlight-alt;
+    }
+  }
+
+// Containers
+
+  .container {
+    width: calc(100% - 3rem);
+    margin: 0 auto;
+
+    @include breakpoint($breakpoint-xs) {
+      width: calc(100% - 4rem);
+    }
+
+    @include breakpoint($breakpoint-md) {
+      max-width: 60rem;
+    }
+
+    @include breakpoint($breakpoint-lg) {
+      width: 52.5rem;
+    }
+  }
+  /*! purgecss end ignore */

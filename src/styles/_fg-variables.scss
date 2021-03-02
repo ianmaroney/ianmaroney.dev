@@ -1,0 +1,25 @@
+// Breakpoints.
+
+  $fg_breakpoint-var:            $breakpoint-var;
+  $fg_breakpoint-reverse:        $breakpoint-reverse;
+  $fg_breakpoint-measure:        $breakpoint-measure;
+  $fg_breakpoint-xs:             $breakpoint-xs;
+  $fg_breakpoint-xssm:           $breakpoint-xssm;
+  $fg_breakpoint-sm:             $breakpoint-sm;
+  $fg_breakpoint-smmd:           $breakpoint-smmd;
+  $fg_breakpoint-md:             $breakpoint-md;
+  $fg_breakpoint-mdlg:           $breakpoint-mdlg;
+  $fg_breakpoint-lg:             $breakpoint-lg;
+  $fg_breakpoint-xl:             $breakpoint-xl;
+
+  $fg_sizes:                     $sizes;
+  $fg_breakpoints:               $breakpoints;
+
+// Spacing.
+
+  $fg_spacing:                   $size-margin;
+
+// Columns.
+
+  $fg_columns:                   12;
+  $fg_multipliers:               6;

@@ -116,3 +116,9 @@ export const getDefaultWhiteList = {
   ul: ['class'],
   video: ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class']
 }
+
+export const nl2br = (str, isXhtml) => {
+  if (typeof str === 'undefined' || str === null) return ''
+  const breakTag = (isXhtml || typeof isXhtml === 'undefined') ? '<br ' + '/>' : '<br>'
+  return (str + '').replace(/(\r\n|\n\r|\r|\n)/g, breakTag + '$1')
+}

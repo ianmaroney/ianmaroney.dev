@@ -5,7 +5,7 @@ import emailjs, { init } from 'emailjs-com'
 import HTMLRender from '@/partials/html-render'
 import ContentRender from '@/partials/content-render'
 
-import { stringToSlug } from '@/util'
+import { stringToSlug, nl2br } from '@/util'
 
 import styles from './index.module.scss'
 
@@ -86,7 +86,7 @@ const Form = ({ fields, success, error }) => {
 
   if (fields && fields.length) {
     const { register, handleSubmit, watch, errors, reset } = useForm()
-    const onSubmit = ({ name, email, message }) => sendFormEmail(name, email, message, setEmailSuccess, setEmailError, reset)
+    const onSubmit = ({ name, email, message }) => sendFormEmail(name, email, nl2br(message), setEmailSuccess, setEmailError, reset)
 
     if (emailSuccess || emailError) {
       return <Outcome emailError={emailError} error={error} success={success} setEmailSuccess={setEmailSuccess} setEmailError={setEmailError} reset={reset} />

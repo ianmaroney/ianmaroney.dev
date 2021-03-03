@@ -50,6 +50,36 @@ const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
     })
 }
 
+const Fields = memo(({ fields, register, watch, errors }) => {
+  return (
+    <div className='grid fields'>
+      {fields.map((field, i) => <Field key={field.title} register={register} watch={watch} errors={errors} {...field} />)}
+
+      <div className='cell _12 field submit align-right'>
+        <input type='submit' className='button' value='Send' />
+      </div>
+    </div>
+  )
+})
+
+const Outcome = memo(({ emailError, error, success, setEmailSuccess, setEmailError, reset }) => {
+  const heading = emailError ? error.heading : success.heading
+  const content = emailError ? `${error.content} <p class='error'>${emailError}</p>` : success.content
+  const cta = emailError ? 'Try Again' : 'Send Another'
+
+  if (heading && content) {
+    return (
+      <div className={styles.outcome}>
+        <header>
+          <HTMLRender tag='h2' content={heading} />
+          <ContentRender content={content} />
+          <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{cta}</button></p>
+        </header>
+      </div>
+    )
+  }
+})
+
 const Form = ({ fields, success, error }) => {
   const [emailSuccess, setEmailSuccess] = useState()
   const [emailError, setEmailError] = useState()
@@ -59,28 +89,14 @@ const Form = ({ fields, success, error }) => {
     const onSubmit = ({ name, email, message }) => sendFormEmail(name, email, message, setEmailSuccess, setEmailError, reset)
 
     if (emailSuccess || emailError) {
-      return (
-        <div className={styles.outcome}>
-          <header>
-            <HTMLRender tag='h2' content={emailError ? error.heading : success.heading} />
-            <ContentRender content={emailError ? `${error.content} <p class='error'>${emailError}</p>` : success.content} />
-            <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{emailError ? 'Try Again' : 'Send Another'}</button></p>
-          </header>
-        </div>
-      )
+      return <Outcome emailError={emailError} error={error} success={success} setEmailSuccess={setEmailSuccess} setEmailError={setEmailError} reset={reset} />
     } else {
       return (
         <form id='contact' className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <fieldset>
             <legend>Hey Ian!</legend>
 
-            <div className='grid fields'>
-              {fields.map((field, i) => <Field key={field.title} register={register} watch={watch} errors={errors} {...field} />)}
-
-              <div className='cell _12 field submit align-right'>
-                <input type='submit' className='button' value='Send' />
-              </div>
-            </div>
+            <Fields fields={fields} register={register} watch={watch} errors={errors} />
           </fieldset>
         </form>
       )

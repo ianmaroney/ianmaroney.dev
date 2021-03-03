@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/config": ["next.config.js"],
+      "@/data": ["src/data"],
       "@/components/*": ["src/components/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/layouts/*": ["src/components/layouts/*"],

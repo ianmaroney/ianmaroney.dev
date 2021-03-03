@@ -4,27 +4,27 @@ import { memo } from 'react'
 
 import HTMLRender from '@/partials/html-render'
 import ContentRender from '@/partials/content-render'
-
-import { stringToSlug } from '@/util'
+import ModuleContent from '@/modules/content'
 import useSecretCode from '@/hooks/use-secret-code'
 
-import styles from './index.module.scss'
+import styles from '../content-blocks/index.module.scss'
+import workStyles from './index.module.scss'
 
-const Links = memo(({ links }) => {
+const WorkLink = memo(({ link }) => {
+  return (
+    <div className='cell _12 smmd_6'>
+      <HTMLRender tag='h3' content={link.title} />
+      <p><a href={link.url} target='_blank' rel='noopener noreferrer'>{link.label}</a></p>
+    </div>
+  )
+})
+
+const WorkLinks = memo(({ links }) => {
   if (links && links.length) {
     return (
-      <>
-        <div className='grid links'>
-          {links.map((link, i) => {
-            return (
-              <div key={link.title} className='cell _12 smmd_6'>
-                <HTMLRender tag='h3' content={link.title} />
-                <p><a href={link.url} target='_blank' rel='noopener noreferrer'>{link.label}</a></p>
-              </div>
-            )
-          })}
-        </div>
-      </>
+      <div className='grid links'>
+        {links.map((link, i) => <WorkLink key={link.title} link={link} />)}
+      </div>
     )
   }
   return null
@@ -47,26 +47,32 @@ const Links = memo(({ links }) => {
 //   return null
 // })
 
-const Works = memo(({ items, showSecret }) => {
+const Work = memo(({ item }) => {
+  return (
+    <div className={`cell _12 ${styles.block} ${workStyles.work}`}>
+      <div className='inner'>
+        <header>
+          <HTMLRender tag='h2' content={item.client} />
+          <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={item.project} />
+        </header>
+        <ContentRender content={item.content} />
+        <WorkLinks links={item.links} />
+      </div>
+    </div>
+  )
+})
+
+const Works = memo(({ items }) => {
+  const showSecret = useSecretCode(['KeyP', 'KeyS', 'KeyS', 'KeyT', 'Enter'])
+
   if (items && items.length) {
     return (
-      <div className={`grid ${styles.works}`}>
+      <div className={`grid ${styles.blocks}`}>
         {items.map((item, i) => {
           if (!item.hidden || showSecret) {
             // <Images images={item.images} />
 
-            return (
-              <div className={`cell _12 ${styles.block}`} key={`${item.client}-${item.role}`}>
-                <div className='inner'>
-                  <header>
-                    <HTMLRender tag='h2' content={item.client} />
-                    <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={item.project} />
-                  </header>
-                  <ContentRender content={item.content} />
-                  <Links links={item.links} />
-                </div>
-              </div>
-            )
+            return <Work key={`${item.client}-${item.role}`} item={item} />
           }
           return null
         })}
@@ -77,17 +83,11 @@ const Works = memo(({ items, showSecret }) => {
 })
 
 const ModuleWorks = memo(({ moduleData, works }) => {
-  const showSecret = useSecretCode(['KeyP', 'KeyS', 'KeyS', 'KeyT', 'Enter'])
-
   if (moduleData) {
     return (
-      <section id={stringToSlug(moduleData.title)}>
-        <header>
-          <HTMLRender tag='h1' content={moduleData.heading} />
-          <ContentRender content={moduleData.content} />
-          <Works items={works.works} showSecret={showSecret} />
-        </header>
-      </section>
+      <ModuleContent moduleData={moduleData}>
+        <Works items={works.works} />
+      </ModuleContent>
     )
   }
   return null

@@ -5,7 +5,7 @@ import ContentRender from '@/partials/content-render'
 
 import { stringToSlug } from '@/util'
 
-const ModuleContent = memo(({ moduleData }) => {
+const ModuleContent = memo(({ moduleData, children }) => {
   if (moduleData) {
     const headingTag = moduleData.hero ? 'h1' : 'h2'
 
@@ -14,6 +14,7 @@ const ModuleContent = memo(({ moduleData }) => {
         <header>
           <HTMLRender tag={headingTag} content={moduleData.heading} />
           <ContentRender content={moduleData.content} />
+          {children}
         </header>
       </section>
     )

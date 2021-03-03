@@ -7,5 +7,19 @@
 }
 
 .block {
-  margin-top: 2rem;
+  margin-top: 1rem;
+
+  :global(.inner) {
+    max-width: 40rem;
+    padding-top: 2rem;
+    margin: auto;
+    border-top: 1px solid #ddd;
+  }
+
+  &:first-child {
+    :global(.inner) {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
 }

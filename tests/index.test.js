@@ -1,3 +1,5 @@
+/* globals describe, expect, it, beforeAll */
+
 import preloadAll from 'jest-next-dynamic'
 import { getPage } from 'next-page-tester'
 import { screen } from '@testing-library/react'

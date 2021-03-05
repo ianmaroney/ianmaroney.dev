@@ -1,3 +1,5 @@
+/* globals describe, expect, it */
+
 import striptags from 'striptags'
 import { render, screen } from '@testing-library/react'
 

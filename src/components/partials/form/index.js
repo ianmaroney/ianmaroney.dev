@@ -1,5 +1,5 @@
-import { memo, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { memo, useState, useEffect } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import emailjs, { init } from 'emailjs-com'
 
 import HTMLRender from '@/partials/html-render'
@@ -9,15 +9,13 @@ import { stringToSlug, nl2br } from '@/util'
 
 import styles from './index.module.scss'
 
-init('user_5qUsnZBvRKWTm0OUW7SD9')
-
-const Field = memo(({ title, type, size, register, watch, errors, attributes }) => {
+const Field = memo(({ title, type, size, control, register, errors, attributes }) => {
   if (title && type && size) {
     const DyanmicField = type === 'textarea' ? 'textarea' : 'input'
     const typeAttr = type === 'textarea' ? undefined : type
     const name = stringToSlug(title, '_')
     const id = stringToSlug(`${title} Input`)
-    const value = watch(name)
+    const value = useWatch({ control, name, defaultValue: '' })
 
     const registerObj = Object.assign({}, attributes)
 
@@ -50,10 +48,10 @@ const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
     })
 }
 
-const Fields = memo(({ fields, register, watch, errors }) => {
+const Fields = memo(({ fields, control, register, errors }) => {
   return (
     <div className='grid fields'>
-      {fields.map((field, i) => <Field key={field.title} register={register} watch={watch} errors={errors} {...field} />)}
+      {fields.map((field, i) => <Field key={field.title} control={control} register={register} errors={errors} {...field} />)}
 
       <div className='cell _12 field submit align-right'>
         <input type='submit' className='button' value='Send' />
@@ -84,8 +82,12 @@ const Form = ({ fields, success, error }) => {
   const [emailSuccess, setEmailSuccess] = useState()
   const [emailError, setEmailError] = useState()
 
+  useEffect(() => {
+    init('user_5qUsnZBvRKWTm0OUW7SD9')
+  }, [])
+
   if (fields && fields.length) {
-    const { register, handleSubmit, watch, errors, reset } = useForm()
+    const { control, register, handleSubmit, errors, reset } = useForm()
     const onSubmit = ({ name, email, message }) => sendFormEmail(name, email, nl2br(message), setEmailSuccess, setEmailError, reset)
 
     if (emailSuccess || emailError) {
@@ -96,7 +98,7 @@ const Form = ({ fields, success, error }) => {
           <fieldset>
             <legend>Hey Ian!</legend>
 
-            <Fields fields={fields} register={register} watch={watch} errors={errors} />
+            <Fields fields={fields} register={register} errors={errors} control={control} />
           </fieldset>
         </form>
       )

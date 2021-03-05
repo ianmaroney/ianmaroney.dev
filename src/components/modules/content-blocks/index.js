@@ -11,8 +11,8 @@ const Block = memo(({ block, headingTag, blockSize }) => {
     <div className={`cell ${styles.block} ${blockSize}`}>
       <header>
         <HTMLRender tag={headingTag} content={block.heading} />
-        <ContentRender content={block.content} />
       </header>
+      <ContentRender content={block.content} />
     </div>
   )
 })

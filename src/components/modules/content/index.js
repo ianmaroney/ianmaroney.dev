@@ -13,9 +13,9 @@ const ModuleContent = memo(({ moduleData, children }) => {
       <section id={stringToSlug(moduleData.title)}>
         <header>
           <HTMLRender tag={headingTag} content={moduleData.heading} />
-          <ContentRender content={moduleData.content} />
-          {children}
         </header>
+        <ContentRender content={moduleData.content} />
+        {children}
       </section>
     )
   }

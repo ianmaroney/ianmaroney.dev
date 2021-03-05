@@ -86,7 +86,7 @@ const ModuleWorks = memo(({ moduleData, works }) => {
   if (moduleData) {
     return (
       <ModuleContent moduleData={moduleData}>
-        <Works items={works.works} />
+        {works && works.works ? <Works items={works.works} /> : null}
       </ModuleContent>
     )
   }

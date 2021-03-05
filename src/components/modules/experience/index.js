@@ -49,7 +49,7 @@ const ModuleExperience = memo(({ moduleData, experience }) => {
 
     return (
       <ModuleContent moduleData={moduleData}>
-        <Experiences type={experienceType} items={experience[experienceType]} />
+        {experience && experienceType && experience[experienceType] ? <Experiences type={experienceType} items={experience[experienceType]} /> : null}
       </ModuleContent>
     )
   }

@@ -1,14 +1,13 @@
-@import "normalize";
-@import "variables";
-@import "globals";
-@import "fg-variables";
+@import "_normalize";
+@import "_variables";
+@import "_globals";
+@import "_fg-variables";
 
-@import "fonts";
-@import "base";
-@import "typography";
+@import "_fonts";
+@import "_base";
+@import "_typography";
 
-@import "button";
-@import "grid";
-// @import "forms";
+@import "_button";
+@import "_grid";
 
-@import "helpers";
+@import "_helpers";

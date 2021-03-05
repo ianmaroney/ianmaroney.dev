@@ -66,7 +66,7 @@ const formData = {
     {
       title: 'Message',
       type: 'textarea',
-      size: "_12",
+      size: '_12',
       attributes: {
         required: true,
         rows: 6

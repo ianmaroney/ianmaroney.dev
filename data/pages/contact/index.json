@@ -11,7 +11,7 @@
           "hero": true,
           "title": "Contact Details",
           "heading": "How to reach me",
-          "blockSize": "_12 md_6 lg_3",
+          "blockSize": "_12 xs_6 md_3",
           "blocks": [
             {
               "title": "Home",

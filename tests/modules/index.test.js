@@ -1,3 +1,5 @@
+/* globals describe, expect, it */
+
 import striptags from 'striptags'
 import { render, screen } from '@testing-library/react'
 
@@ -64,7 +66,7 @@ const formData = {
     {
       title: 'Message',
       type: 'textarea',
-      size: "_12",
+      size: '_12',
       attributes: {
         required: true,
         rows: 6

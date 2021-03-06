@@ -61,4 +61,9 @@
       width: 52.5rem;
     }
   }
+
+  nav {
+    opacity: 0;
+    pointer-events: none;
+  }
   /*! purgecss end ignore */

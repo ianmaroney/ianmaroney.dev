@@ -27,7 +27,7 @@ const Header = ({ menus }) => {
         <span className='bar b2' />
       </button>
 
-      <Nav navItems={menus.main || []} setNavigating={setNavigating} />
+      <Nav navItems={menus.main || []} handleClick={e => setNavigating(false)} />
     </header>
   )
 }

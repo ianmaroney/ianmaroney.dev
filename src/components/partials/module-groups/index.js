@@ -1,8 +1,6 @@
-import { memo } from 'react'
-
 import ModuleGroup from '@/partials/module-group'
 
-const ModuleGroups = memo(({ page }) => {
+const ModuleGroups = ({ page }) => {
   if (page && page.moduleGroups && page.moduleGroups.length) {
     return (
       <>
@@ -11,6 +9,6 @@ const ModuleGroups = memo(({ page }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleGroups

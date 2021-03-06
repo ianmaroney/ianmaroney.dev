@@ -1,12 +1,10 @@
-import { memo } from 'react'
-
 import HTMLRender from '@/partials/html-render'
 import ContentRender from '@/partials/content-render'
 import ModuleContent from '@/modules/content'
 
 import styles from './index.module.scss'
 
-const Block = memo(({ block, headingTag, blockSize }) => {
+const Block = ({ block, headingTag, blockSize }) => {
   return (
     <div className={`cell ${styles.block} ${blockSize}`}>
       <header>
@@ -15,9 +13,9 @@ const Block = memo(({ block, headingTag, blockSize }) => {
       <ContentRender content={block.content} />
     </div>
   )
-})
+}
 
-const Blocks = memo(({ blocks, hero, blockSize = '_12 md_6' }) => {
+const Blocks = ({ blocks, hero, blockSize = '_12 md_6' }) => {
   if (blocks && blocks.length) {
     return (
       <div className={`grid ${styles.blocks}`}>
@@ -26,9 +24,9 @@ const Blocks = memo(({ blocks, hero, blockSize = '_12 md_6' }) => {
     )
   }
   return null
-})
+}
 
-const ModuleContentBlocks = memo(({ moduleData }) => {
+const ModuleContentBlocks = ({ moduleData }) => {
   if (moduleData) {
     return (
       <ModuleContent moduleData={moduleData}>
@@ -37,6 +35,6 @@ const ModuleContentBlocks = memo(({ moduleData }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleContentBlocks

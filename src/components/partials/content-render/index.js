@@ -1,4 +1,4 @@
-import { cloneElement, useMemo, memo, Fragment } from 'react'
+import { cloneElement, useMemo, Fragment } from 'react'
 import parse from 'html-react-parser'
 import xss from 'xss'
 
@@ -43,7 +43,7 @@ const manipulateNodes = (nodes) => {
   return manipulatedNodes
 }
 
-const ContentRender = memo(({ content, tag, tagAttr = {} }) => {
+const ContentRender = ({ content, tag, tagAttr = {} }) => {
   if (content) {
     const options = { whiteList: getDefaultWhiteList }
     const sanitizedContent = xss(content, options)
@@ -57,6 +57,6 @@ const ContentRender = memo(({ content, tag, tagAttr = {} }) => {
     return <Tag {...tagAttr}>{modifiedNodes}</Tag>
   }
   return null
-})
+}
 
 export default ContentRender

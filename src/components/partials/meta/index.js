@@ -1,8 +1,5 @@
-import { memo } from 'react'
-
 import Head from 'next/head'
 
-const Meta = memo(({ page, globals }) => {
   if (page) {
     return (
       <Head>
@@ -13,6 +10,6 @@ const Meta = memo(({ page, globals }) => {
     )
   }
   return null
-})
+}
 
 export default Meta

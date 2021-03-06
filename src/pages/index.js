@@ -1,13 +1,12 @@
-import { memo } from 'react'
 import fs from 'fs'
 
 import Main from '@/layouts/main'
 
-const Home = memo((props) => {
+const Home = (props) => {
   return (
     <Main {...props} />
   )
-})
+}
 
 export async function getStaticProps (context) {
   const rawGlobalData = fs.readFileSync('./data/globals/index.json')

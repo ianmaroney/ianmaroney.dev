@@ -1,9 +1,7 @@
-import { memo } from 'react'
-
 import Form from '@/partials/form'
 import ModuleContent from '@/modules/content'
 
-const ModuleForm = memo(({ moduleData }) => {
+const ModuleForm = ({ moduleData }) => {
   if (moduleData) {
     return (
       <ModuleContent moduleData={moduleData}>
@@ -12,6 +10,6 @@ const ModuleForm = memo(({ moduleData }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleForm

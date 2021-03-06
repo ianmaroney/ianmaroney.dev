@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import HTMLRender from '@/partials/html-render'
 import ContentRender from '@/partials/content-render'
 import ModuleContent from '@/modules/content'
@@ -13,7 +11,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
-const Experience = memo(({ item }) => {
+const Experience = ({ item }) => {
   const start = new Date(item.start)
   const end = item.end ? new Date(item.end) : undefined
 
@@ -30,9 +28,9 @@ const Experience = memo(({ item }) => {
       </div>
     </div>
   )
-})
+}
 
-const Experiences = memo(({ type, items }) => {
+const Experiences = ({ type, items }) => {
   if (items && items.length) {
     return (
       <div className={`grid ${styles.blocks}`}>
@@ -41,9 +39,9 @@ const Experiences = memo(({ type, items }) => {
     )
   }
   return null
-})
+}
 
-const ModuleExperience = memo(({ moduleData, experience }) => {
+const ModuleExperience = ({ moduleData, experience }) => {
   if (moduleData) {
     const experienceType = stringToSlug(moduleData.title)
 
@@ -54,6 +52,6 @@ const ModuleExperience = memo(({ moduleData, experience }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleExperience

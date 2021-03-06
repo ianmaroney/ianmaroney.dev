@@ -1,10 +1,8 @@
-import { memo } from 'react'
-
 import ModuleGroups from '@/partials/module-groups'
 
 import styles from './index.module.scss'
 
-const Main = memo(({ page }) => {
+const Main = ({ page }) => {
   if (page && page.moduleGroups) {
     return (
       <main className={`${styles.main} ${page.slug}`}>
@@ -15,6 +13,6 @@ const Main = memo(({ page }) => {
     )
   }
   return null
-})
+}
 
 export default Main

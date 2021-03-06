@@ -1,11 +1,9 @@
-import { memo } from 'react'
-
 import HTMLRender from '@/partials/html-render'
 import ContentRender from '@/partials/content-render'
 
 import { stringToSlug } from '@/util'
 
-const ModuleContent = memo(({ moduleData, children }) => {
+const ModuleContent = ({ moduleData, children }) => {
   if (moduleData) {
     const headingTag = moduleData.hero ? 'h1' : 'h2'
 
@@ -20,6 +18,6 @@ const ModuleContent = memo(({ moduleData, children }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleContent

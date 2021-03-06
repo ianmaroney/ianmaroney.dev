@@ -1,10 +1,8 @@
-import { memo } from 'react'
-
 import Link from 'next/link'
 
 import styles from './index.module.scss'
 
-const Header = memo(({ navItems, setNavigating }) => {
+const Nav = ({ navItems, handleClick }) => {
   if (navItems && navItems.length) {
     return (
       <nav className={styles.nav}>
@@ -23,6 +21,6 @@ const Header = memo(({ navItems, setNavigating }) => {
     )
   }
   return null
-})
+}
 
-export default Header
+export default Nav

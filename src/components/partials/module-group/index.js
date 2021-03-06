@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 import dynamic from 'next/dynamic'
 
 const moduleTypes = {
@@ -11,7 +9,7 @@ const moduleTypes = {
   works: dynamic(() => import('@/modules/works'))
 }
 
-const ModuleGroup = memo(({ moduleGroup, extras }) => {
+const ModuleGroup = ({ moduleGroup, extras }) => {
   if (moduleGroup && moduleGroup.modules && moduleGroup.modules.length) {
     const modules = moduleGroup.modules
 
@@ -25,6 +23,6 @@ const ModuleGroup = memo(({ moduleGroup, extras }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleGroup

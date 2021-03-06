@@ -1,10 +1,10 @@
-import { memo, Fragment } from 'react'
+import { Fragment } from 'react'
 import parse from 'html-react-parser'
 import xss from 'xss'
 
 import { getDefaultWhiteList } from '@/util'
 
-const HTMLRender = memo(({ content, tag, tagAttr = {} }) => {
+const HTMLRender = ({ content, tag, tagAttr = {} }) => {
   if (content) {
     const options = { whiteList: getDefaultWhiteList }
     const sanitizedContent = xss(content, options)
@@ -13,6 +13,6 @@ const HTMLRender = memo(({ content, tag, tagAttr = {} }) => {
     return <Tag {...tagAttr}>{parse(sanitizedContent)}</Tag>
   }
   return null
-})
+}
 
 export default HTMLRender

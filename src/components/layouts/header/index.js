@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import { useState } from 'react'
 
 import Link from 'next/link'
 
@@ -6,7 +6,7 @@ import Nav from '@/partials/nav'
 
 import styles from './index.module.scss'
 
-const Header = memo(({ menus }) => {
+const Header = ({ menus }) => {
   const [navigating, setNavigating] = useState(false)
 
   return (
@@ -24,6 +24,6 @@ const Header = memo(({ menus }) => {
       <Nav navItems={menus.main || []} setNavigating={setNavigating} />
     </header>
   )
-})
+}
 
 export default Header

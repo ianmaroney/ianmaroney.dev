@@ -1,5 +1,3 @@
-import { memo } from 'react'
-
 // import Image from 'next/image'
 
 import HTMLRender from '@/partials/html-render'
@@ -10,16 +8,16 @@ import useSecretCode from '@/hooks/use-secret-code'
 import styles from '../content-blocks/index.module.scss'
 import workStyles from './index.module.scss'
 
-const WorkLink = memo(({ link }) => {
+const WorkLink = ({ link }) => {
   return (
     <div className='cell _12 smmd_6'>
       <HTMLRender tag='h3' content={link.title} />
       <p><a href={link.url} target='_blank' rel='noopener noreferrer'>{link.label}</a></p>
     </div>
   )
-})
+}
 
-const WorkLinks = memo(({ links }) => {
+const WorkLinks = ({ links }) => {
   if (links && links.length) {
     return (
       <div className='grid links'>
@@ -28,9 +26,9 @@ const WorkLinks = memo(({ links }) => {
     )
   }
   return null
-})
+}
 
-// const Images = memo(({ images }) => {
+// const Images = ({ images }) => {
 //   if (images && images.length) {
 //     return (
 //       <div className='grid images'>
@@ -45,9 +43,9 @@ const WorkLinks = memo(({ links }) => {
 //     )
 //   }
 //   return null
-// })
+// }
 
-const Work = memo(({ item }) => {
+const Work = ({ item }) => {
   return (
     <div className={`cell _12 ${styles.block} ${workStyles.work}`}>
       <div className='inner'>
@@ -60,9 +58,9 @@ const Work = memo(({ item }) => {
       </div>
     </div>
   )
-})
+}
 
-const Works = memo(({ items }) => {
+const Works = ({ items }) => {
   const showSecret = useSecretCode(['KeyP', 'KeyS', 'KeyS', 'KeyT', 'Enter'])
 
   if (items && items.length) {
@@ -80,9 +78,9 @@ const Works = memo(({ items }) => {
     )
   }
   return null
-})
+}
 
-const ModuleWorks = memo(({ moduleData, works }) => {
+const ModuleWorks = ({ moduleData, works }) => {
   if (moduleData) {
     return (
       <ModuleContent moduleData={moduleData}>
@@ -91,6 +89,6 @@ const ModuleWorks = memo(({ moduleData, works }) => {
     )
   }
   return null
-})
+}
 
 export default ModuleWorks

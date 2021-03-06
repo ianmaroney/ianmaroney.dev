@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import emailjs, { init } from 'emailjs-com'
 
@@ -9,7 +9,7 @@ import { stringToSlug, nl2br } from '@/util'
 
 import styles from './index.module.scss'
 
-const Field = memo(({ title, type, size, control, register, errors, attributes }) => {
+const Field = ({ title, type, size, control, register, errors, attributes }) => {
   if (title && type && size) {
     const DyanmicField = type === 'textarea' ? 'textarea' : 'input'
     const typeAttr = type === 'textarea' ? undefined : type
@@ -28,7 +28,7 @@ const Field = memo(({ title, type, size, control, register, errors, attributes }
     )
   }
   return null
-})
+}
 
 const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
   const templateParams = {
@@ -48,7 +48,7 @@ const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
     })
 }
 
-const Fields = memo(({ fields, control, register, errors }) => {
+const Fields = ({ fields, control, register, errors }) => {
   return (
     <div className='grid fields'>
       {fields.map((field, i) => <Field key={field.title} control={control} register={register} errors={errors} {...field} />)}
@@ -58,9 +58,9 @@ const Fields = memo(({ fields, control, register, errors }) => {
       </div>
     </div>
   )
-})
+}
 
-const Outcome = memo(({ emailError, error, success, setEmailSuccess, setEmailError, reset }) => {
+const Outcome = ({ emailError, error, success, setEmailSuccess, setEmailError, reset }) => {
   const heading = emailError ? error.heading : success.heading
   const content = emailError ? `${error.content} <p class='error'>${emailError}</p>` : success.content
   const cta = emailError ? 'Try Again' : 'Send Another'
@@ -76,7 +76,7 @@ const Outcome = memo(({ emailError, error, success, setEmailSuccess, setEmailErr
       </div>
     )
   }
-})
+}
 
 const Form = ({ fields, success, error }) => {
   const [emailSuccess, setEmailSuccess] = useState()

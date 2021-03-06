@@ -6,14 +6,20 @@ import Nav from '@/partials/nav'
 
 import styles from './index.module.scss'
 
+const Logo = ({ setNavigating }) => {
+  return (
+    <Link href='/' className={styles.brand}>
+      <a onClick={e => setNavigating(false)}>I<span className='sr-only'>an </span>M<span className='sr-only'>aroney</span></a>
+    </Link>
+  )
+}
+
 const Header = ({ menus }) => {
   const [navigating, setNavigating] = useState(false)
 
   return (
     <header className={`${styles.header}${navigating ? ' navigating' : ''}`}>
-      <Link href='/' className={styles.brand}>
-        <a onClick={() => setNavigating(false)}>I<span className='sr-only'>an </span>M<span className='sr-only'>aroney</span></a>
-      </Link>
+      <Logo setNavigating={setNavigating} />
 
       <button className={styles.toggle} onClick={() => setNavigating(!navigating)}>
         <span className='sr-only'>Menu</span>

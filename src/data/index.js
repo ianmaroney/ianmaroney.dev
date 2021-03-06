@@ -7,7 +7,7 @@ export async function getData (pageSlug, hasExtras = false) {
   const rawMenusData = fs.readFileSync('./data/menus/index.json')
   const menus = JSON.parse(rawMenusData)
 
-  const rawPageData = fs.readFileSync(`./data/pages/${pageSlug}/index.json`)
+  const rawPageData = fs.readFileSync(`./data/pages${pageSlug ? `/${pageSlug}` : ''}/index.json`)
   const page = JSON.parse(rawPageData)
 
   if (page && hasExtras) {

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-  if (page) {
+const Meta = ({ page, globals }) => {
+  if (page && page.title) {
     return (
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' key='viewport' />

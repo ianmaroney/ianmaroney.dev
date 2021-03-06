@@ -6,6 +6,7 @@
     "build": "next build",
     "clean": "del ./.next && del ./out",
     "dev": "next dev",
+    "preexport": "npm run test",
     "export": "npm run clean && next build && next export",
     "start": "next start",
     "test": "jest"

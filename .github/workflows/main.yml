@@ -76,4 +76,4 @@ jobs:
 
       - name: Set S3 metadata
         run: |
-          aws s3 cp s3://ianmaroney-dev-test/ s3://ianmaroney-dev-test/ --exclude "*" --include "*.js" --include "*.css" --include "*.json" --include "*.jpg" --include "*.png" --include "*.gif" --recursive --cache-control max-age=2592000
+          aws s3 cp s3://${{ secrets.S3_BUCKET }}/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*" --include "*.js" --include "*.css" --include "*.json" --include "*.jpg" --include "*.png" --include "*.gif" --recursive --cache-control max-age=2592000

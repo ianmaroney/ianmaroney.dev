@@ -2,6 +2,7 @@
 @import "/src/styles/globals";
 @import "/src/styles/fg-variables";
 
+/*! purgecss start ignore */
 .outcome {
   max-width: 40rem;
   margin: 2rem auto 0;
@@ -87,3 +88,4 @@
     resize: vertical;
   }
 }
+/*! purgecss end ignore */

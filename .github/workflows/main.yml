@@ -33,10 +33,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Export
+      - name: Run export
         run: npm run export
 
-      - name: Deploy
+      - name: Deploy to S3
         uses: reggionick/s3-deploy@v3
         with:
           folder: out
@@ -45,5 +45,9 @@ jobs:
           # dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           # invalidation: /
           delete-removed: true
-          no-cache: true
+          # no-cache: true
           private: true
+
+      - name: Set S3 metadata
+        uses: chrislennon/action-aws-cli@v1.1
+        run: aws s3 cp s3://${{ secrets.S3_BUCKET }}/ s3://${{ secrets.S3_BUCKET }}/ --exclude "*" --include "*.js" --include "*.css" --include "*.json" --recursive --metadata-directive REPLACE --expires 2034-01-01T00:00:00Z --cache-control max-age=2592000

@@ -35,3 +35,9 @@ yarn-error.log*
 
 # resources
 /resources
+
+# backup
+._BACKUP_*
+
+# docker - (local preview of export)
+/docker-compose.yml

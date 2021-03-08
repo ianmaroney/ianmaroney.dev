@@ -59,6 +59,7 @@ const contentTagAttrClass = { className: 'content' }
 const contentTagAttrOnClick = { onClick: jest.fn() }
 const contentTagAttrClassRef = { className: 'content', ref: createRef(null) }
 const contentInTag = '<p>Content in tag.</p>'
+const children = 'Children.'
 
 const navNavItems = [{
   title: 'Home',
@@ -193,5 +194,6 @@ module.exports = {
   moduleGroupModuleGroup,
   moduleGroupExtras,
   moduleGroupsPage,
-  formData
+  formData,
+  children
 }

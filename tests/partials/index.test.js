@@ -60,7 +60,59 @@ describe('Partials ContentRender', () => {
   })
 })
 
-// TODO: Tests for <Form /> partial
+describe('Partials Form', () => {
+  it('null Form', async () => {
+    render(<Form />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: success', async () => {
+    render(<Form success={Object.assign({}, data.formData.success)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: error', async () => {
+    render(<Form error={Object.assign({}, data.formData.error)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: success + error', async () => {
+    render(<Form success={Object.assign({}, data.formData.success)} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('Form: fields', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields + success', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} success={Object.assign({}, data.formData.success)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields + error', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields success + error', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} success={Object.assign({}, data.formData.success)} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+})
 
 describe('Partials Meta', () => {
   it('null Head', async () => {

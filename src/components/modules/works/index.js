@@ -1,7 +1,6 @@
 // import Image from 'next/image'
 
 import HTMLRender from '@/partials/html-render'
-import ContentRender from '@/partials/content-render'
 import ModuleContent from '@/modules/content'
 import useSecretCode from '@/hooks/use-secret-code'
 
@@ -53,7 +52,7 @@ const Work = ({ item }) => {
           <HTMLRender tag='h2' content={item.client} />
           <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={item.project} />
         </header>
-        <ContentRender content={item.content} />
+        <HTMLRender content={item.content} manipulateNodes />
         <WorkLinks links={item.links} />
       </div>
     </div>

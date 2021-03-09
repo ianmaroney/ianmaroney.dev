@@ -9,7 +9,7 @@ beforeAll(async () => {
 })
 
 describe('Pages render', () => {
-  it('renders home page', async () => {
+  it('/ - Home', async () => {
     const { render } = await getPage({
       route: '/'
     })
@@ -18,7 +18,7 @@ describe('Pages render', () => {
     expect(await screen.findByText('Hey, I’m Ian!', { exact: false })).toBeInTheDocument()
   })
 
-  it('renders experience page', async () => {
+  it('/experience - Experience', async () => {
     const { render } = await getPage({
       route: '/experience'
     })
@@ -27,7 +27,7 @@ describe('Pages render', () => {
     expect(await screen.findByText('Truth Collective, LLC')).toBeInTheDocument()
   })
 
-  it('renders works page', async () => {
+  it('/works - Works', async () => {
     const { render } = await getPage({
       route: '/works'
     })
@@ -36,7 +36,7 @@ describe('Pages render', () => {
     expect(await screen.findByText('Selected works')).toBeInTheDocument()
   })
 
-  it('renders contact page', async () => {
+  it('/contact - Contact', async () => {
     const { render } = await getPage({
       route: '/contact'
     })

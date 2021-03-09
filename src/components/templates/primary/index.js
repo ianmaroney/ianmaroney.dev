@@ -5,14 +5,17 @@ import Header from '@/layouts/header'
 import Footer from '@/layouts/footer'
 
 const Primary = memo(({ page, globals, menus, children }) => {
-  return (
-    <>
-      <Meta page={page} globals={globals} />
-      <Header menus={menus} />
-      {children}
-      <Footer />
-    </>
-  )
+  if (page && children) {
+    return (
+      <>
+        <Meta page={page} globals={globals} />
+        <Header menus={menus} />
+        {children}
+        <Footer />
+      </>
+    )
+  }
+  return null
 })
 
 export default Primary

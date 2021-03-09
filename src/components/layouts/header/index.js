@@ -15,6 +15,7 @@ const Logo = ({ setNavigating }) => {
 }
 
 const Header = ({ menus }) => {
+  const navItems = menus && menus.main ? menus.main : []
   const [navigating, setNavigating] = useState(false)
 
   return (
@@ -27,7 +28,7 @@ const Header = ({ menus }) => {
         <span className='bar b2' />
       </button>
 
-      <Nav navItems={menus.main || []} handleClick={e => setNavigating(false)} />
+      <Nav navItems={navItems} handleClick={e => setNavigating(false)} />
     </header>
   )
 }

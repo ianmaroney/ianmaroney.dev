@@ -1,5 +1,4 @@
 import HTMLRender from '@/partials/html-render'
-import ContentRender from '@/partials/content-render'
 import ModuleContent from '@/modules/content'
 
 import styles from './index.module.scss'
@@ -10,7 +9,7 @@ const Block = ({ block, headingTag, blockSize }) => {
       <header>
         <HTMLRender tag={headingTag} content={block.heading} />
       </header>
-      <ContentRender content={block.content} />
+      <HTMLRender content={block.content} manipulateNodes />
     </div>
   )
 }

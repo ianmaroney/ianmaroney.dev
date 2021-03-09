@@ -1,146 +1,118 @@
-/* globals describe, expect, it, beforeAll, jest */
+/* globals describe, expect, it, beforeAll */
 
-import { createRef } from 'react'
 import striptags from 'striptags'
 import preloadAll from 'jest-next-dynamic'
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import ContentRender from '@/partials/content-render'
+import HTMLRender from '@/partials/html-render'
 import Nav from '@/partials/nav'
 import Meta from '@/partials/meta'
 import ModuleGroup from '@/partials/module-group'
 import ModuleGroups from '@/partials/module-groups'
+import Form from '@/partials/form'
 
-const content = 'Content.'
-const contentTag = 'p'
-const contentTagAttrClass = { className: 'content' }
-const contentTagAttrOnClick = { onClick: jest.fn() }
-const contentTagAttrClassRef = { className: 'content', ref: createRef(null) }
-const contentInTag = '<p>Content in tag.</p>'
-
-const navNavItems = [{
-  title: 'Home',
-  url: '/'
-}, {
-  title: 'Test 1',
-  url: '/test-1'
-}, {
-  title: 'Test 2',
-  url: '/test-2'
-}, {
-  title: 'Test 3',
-  url: '/test-3'
-}]
-const navHandleClick = jest.fn(e => e.preventDefault())
-
-const metaGlobals = {
-  titleExtras: [
-    'Test <title> Ending'
-  ]
-}
-
-const metaPage = {
-  path: '/experience',
-  slug: 'experience',
-  title: 'Experience'
-}
-
-const moduleGroupModuleGroup = {
-  modules: [{
-    type: 'content',
-    title: 'Content',
-    heading: 'Heading',
-    content: '<p>Content.</p>',
-    blocks: [
-      {
-        title: 'Content Block',
-        heading: 'Block Heading',
-        content: '<p>Block content.</p>'
-      }
-    ]
-  }]
-}
-
-const moduleGroupExtras = {
-  experience: {
-    content: [
-      {
-        company: 'Experience Company',
-        role: 'Experience Role',
-        start: '2021-03-01',
-        current: true,
-        location: 'Experience City, EX',
-        content: '<p>Experience content.</p>'
-      },
-      {
-        company: 'Experience Company 2',
-        role: 'Experience Role 2',
-        start: '2021-01-01',
-        end: '2021-02-28',
-        location: 'Experience City 2, EX2',
-        content: '<p>Experience content 2.</p>'
-      }
-    ]
-  }
-}
-
-const moduleGroupsPage = {
-  ...metaPage,
-  moduleGroups: [{
-    title: 'ModuleGroup Title',
-    modules: moduleGroupModuleGroup.modules
-  }],
-  extras: moduleGroupExtras
-}
+import data from '../data'
 
 beforeAll(async () => {
   await preloadAll()
 })
 
-describe('Partials ContentRender', () => {
-  it('null ContentRender', async () => {
-    render(<ContentRender />)
+describe('Partials HTMLRender', () => {
+  it('null HTMLRender', async () => {
+    render(<HTMLRender />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
-  it('null ContentRender: tag', async () => {
-    render(<ContentRender tag={contentTag} />)
+  it('null HTMLRender: tag', async () => {
+    render(<HTMLRender tag={data.contentTag} />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
-  it('ContentRender: content', async () => {
-    render(<ContentRender content={contentInTag} />)
-    expect(screen.getByText(striptags(contentInTag))).toBeInTheDocument()
+  it('HTMLRender: content', async () => {
+    render(<HTMLRender content={data.contentInTag} />)
+    expect(screen.getByText(striptags(data.contentInTag))).toBeInTheDocument()
   })
 
-  it('ContentRender: content + tag', async () => {
-    render(<ContentRender content={content} tag={contentTag} />)
-    expect(screen.getByText(content)).toBeInTheDocument()
+  it('HTMLRender: content + tag', async () => {
+    render(<HTMLRender content={data.content} tag={data.contentTag} />)
+    expect(screen.getByText(data.content)).toBeInTheDocument()
   })
 
-  it('ContentRender: content + tag + tagAttr{onClick}', async () => {
-    render(<ContentRender content={content} tag={contentTag} tagAttr={contentTagAttrOnClick} />)
-    expect(screen.getByText(content)).toBeInTheDocument()
-    fireEvent.click(screen.getByText(content))
-    expect(contentTagAttrOnClick.onClick).toHaveBeenCalledTimes(1)
+  it('HTMLRender: content + tag + tagAttr{onClick}', async () => {
+    render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={data.contentTagAttrOnClick} />)
+    expect(screen.getByText(data.content)).toBeInTheDocument()
+    fireEvent.click(screen.getByText(data.content))
+    expect(data.contentTagAttrOnClick.onClick).toHaveBeenCalledTimes(1)
   })
 
-  it('ContentRender: content + tag + tagAttr{className}', async () => {
-    const tagAttr = Object.assign({}, contentTagAttrClass)
-    const { container } = render(<ContentRender content={content} tag={contentTag} tagAttr={tagAttr} />)
-    expect(screen.getByText(content)).toBeInTheDocument()
+  it('HTMLRender: content + tag + tagAttr{className}', async () => {
+    const tagAttr = Object.assign({}, data.contentTagAttrClass)
+    const { container } = render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
+    expect(screen.getByText(data.content)).toBeInTheDocument()
     expect(container).toMatchSnapshot()
   })
 
-  it('ContentRender: content + tag + tagAttr{className, ref}', async () => {
-    const tagAttr = Object.assign({}, contentTagAttrClassRef)
-    const { container } = render(<ContentRender content={content} tag={contentTag} tagAttr={tagAttr} />)
-    expect(screen.getByText(content)).toBeInTheDocument()
+  it('HTMLRender: content + tag + tagAttr{className, ref}', async () => {
+    const tagAttr = Object.assign({}, data.contentTagAttrClassRef)
+    const { container } = render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
+    expect(screen.getByText(data.content)).toBeInTheDocument()
     expect(container).toMatchSnapshot()
   })
 })
 
-// TODO: Tests for <Form /> partial
+describe('Partials Form', () => {
+  it('null Form', async () => {
+    render(<Form />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: success', async () => {
+    render(<Form success={Object.assign({}, data.formData.success)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: error', async () => {
+    render(<Form error={Object.assign({}, data.formData.error)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('null Form: success + error', async () => {
+    render(<Form success={Object.assign({}, data.formData.success)} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.queryByText(/\w/)).toBeNull()
+  })
+
+  it('Form: fields', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields + success', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} success={Object.assign({}, data.formData.success)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields + error', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+
+  it('Form: fields success + error', async () => {
+    const fields = [...data.formData.fields]
+    render(<Form fields={fields} success={Object.assign({}, data.formData.success)} error={Object.assign({}, data.formData.error)} />)
+    expect(screen.getByLabelText(fields[0].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[1].title)).toBeInTheDocument()
+    expect(screen.getByLabelText(fields[2].title)).toBeInTheDocument()
+  })
+})
 
 describe('Partials Meta', () => {
   it('null Head', async () => {
@@ -149,7 +121,7 @@ describe('Partials Meta', () => {
   })
 
   it('null Head: globals', async () => {
-    render(<Meta globals={Object.assign({}, metaGlobals)} />)
+    render(<Meta globals={Object.assign({}, data.metaGlobals)} />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
@@ -167,22 +139,22 @@ describe('Partials ModuleGroup', () => {
   })
 
   it('null ModuleGroup: extras', async () => {
-    const extras = Object.assign({}, moduleGroupExtras)
+    const extras = Object.assign({}, data.moduleGroupExtras)
     render(<ModuleGroup extras={extras} />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
   it('ModuleGroup: moduleGroup', async () => {
-    const moduleGroup = Object.assign({}, moduleGroupModuleGroup)
+    const moduleGroup = Object.assign({}, data.moduleGroupModuleGroup)
     moduleGroup.modules[0].type = 'content'
     render(<ModuleGroup moduleGroup={moduleGroup} />)
     expect(screen.getByText(moduleGroup.modules[0].heading)).toBeInTheDocument()
   })
 
   it('ModuleGroup: moduleGroup + extras', async () => {
-    const moduleGroup = Object.assign({}, moduleGroupModuleGroup)
+    const moduleGroup = Object.assign({}, data.moduleGroupModuleGroup)
     moduleGroup.modules[0].type = 'experience'
-    const extras = Object.assign({}, moduleGroupExtras)
+    const extras = Object.assign({}, data.moduleGroupExtras)
     render(<ModuleGroup moduleGroup={moduleGroup} extras={extras} />)
     expect(screen.getByText(moduleGroup.modules[0].heading)).toBeInTheDocument()
     expect(screen.getByText(extras.experience.content[0].company)).toBeInTheDocument()
@@ -196,13 +168,13 @@ describe('Partials ModuleGroups', () => {
   })
 
   it('ModuleGroups: page', async () => {
-    const page = Object.assign({}, moduleGroupsPage)
+    const page = Object.assign({}, data.moduleGroupsPage)
     render(<ModuleGroups page={page} />)
     expect(screen.getByText(page.moduleGroups[0].modules[0].heading)).toBeInTheDocument()
   })
 
   it('ModuleGroups: page w/extras', async () => {
-    const page = Object.assign({}, moduleGroupsPage)
+    const page = Object.assign({}, data.moduleGroupsPage)
     page.moduleGroups[0].modules[0].type = 'experience'
     page.moduleGroups[0].modules[0].title = 'Content'
     render(<ModuleGroups page={page} />)
@@ -217,22 +189,22 @@ describe('Partials Nav', () => {
   })
 
   it('null Nav: setNavigating', async () => {
-    render(<Nav setNavigating={navHandleClick} />)
+    render(<Nav setNavigating={data.navHandleClick} />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
   it('Nav: navItems', async () => {
-    const navItems = [...navNavItems]
+    const navItems = [...data.navNavItems]
     render(<Nav navItems={navItems} />)
     expect(screen.getByText(navItems[0].title)).toBeInTheDocument()
   })
 
   it('Nav: navItems + handleClick', async () => {
-    const navItems = [...navNavItems]
-    render(<Nav navItems={navItems} handleClick={navHandleClick} />)
+    const navItems = [...data.navNavItems]
+    render(<Nav navItems={navItems} handleClick={data.navHandleClick} />)
     expect(screen.getByText(navItems[0].title)).toBeInTheDocument()
 
     fireEvent.click(screen.getByText(navItems[0].title))
-    expect(navHandleClick).toHaveBeenCalledTimes(1)
+    expect(data.navHandleClick).toHaveBeenCalledTimes(1)
   })
 })

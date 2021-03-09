@@ -12,13 +12,13 @@ import ModuleWorks from '@/modules/works'
 import data from '../data'
 
 describe('Modules render', () => {
-  it('renders content module', async () => {
+  it('ModuleContent', async () => {
     render(<ModuleContent moduleData={data.moduleData} />)
     expect(screen.getByText(data.moduleData.heading)).toBeInTheDocument()
     expect(screen.getByText(striptags(data.moduleData.content))).toBeInTheDocument()
   })
 
-  it('renders content-blocks module', async () => {
+  it('ModuleContentBlocks', async () => {
     render(<ModuleContentBlocks moduleData={data.moduleData} />)
 
     expect(screen.getByText(data.moduleData.heading)).toBeInTheDocument()
@@ -28,7 +28,7 @@ describe('Modules render', () => {
     expect(screen.getByText(striptags(data.moduleData.blocks[0].content))).toBeInTheDocument()
   })
 
-  it('renders experience module', async () => {
+  it('ModuleExperience', async () => {
     render(<ModuleExperience moduleData={data.moduleData} experience={data.experienceData} />)
 
     expect(screen.getByText(data.moduleData.heading)).toBeInTheDocument()
@@ -40,7 +40,7 @@ describe('Modules render', () => {
     expect(screen.getByText(striptags(data.experienceData.content[0].content))).toBeInTheDocument()
   })
 
-  it('renders form module', async () => {
+  it('ModuleForm', async () => {
     data.moduleData.fields = data.formData.fields
     render(<ModuleForm moduleData={data.moduleData} />)
 
@@ -50,7 +50,7 @@ describe('Modules render', () => {
     expect(screen.getByText(data.formData.fields[0].title)).toBeInTheDocument()
   })
 
-  it('renders works module', async () => {
+  it('ModuleWorks', async () => {
     render(<ModuleWorks moduleData={data.moduleData} works={data.worksData} />)
 
     expect(screen.getByText(data.moduleData.heading)).toBeInTheDocument()

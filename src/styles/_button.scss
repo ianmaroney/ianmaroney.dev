@@ -18,7 +18,7 @@ input.button {
   border: 1px solid $color-highlight;
   background: $color-highlight;
   color: $color-bg;
-  font-size: 1.25rem;
+  font-size: 1.33333333333333333rem;
   line-height: 1;
   text-align: center;
   font-weight: $font-weight-semibold;
@@ -41,5 +41,9 @@ input.button {
   &.sm {
     font-size: 0.75rem;
     padding: ($size-margin * 0.75) ($size-margin * 1.25);
+  }
+
+  @include breakpoint($breakpoint-md) {
+    font-size: 1.25rem;
   }
 }

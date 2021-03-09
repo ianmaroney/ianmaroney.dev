@@ -1,5 +1,4 @@
 import HTMLRender from '@/partials/html-render'
-import ContentRender from '@/partials/content-render'
 
 import { stringToSlug } from '@/util'
 
@@ -12,7 +11,7 @@ const ModuleContent = ({ moduleData, children }) => {
         <header>
           <HTMLRender tag={headingTag} content={moduleData.heading} />
         </header>
-        <ContentRender content={moduleData.content} />
+        <HTMLRender content={moduleData.content} manipulateNodes />
         {children}
       </section>
     )

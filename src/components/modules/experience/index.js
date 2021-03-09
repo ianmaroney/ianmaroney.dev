@@ -1,5 +1,4 @@
 import HTMLRender from '@/partials/html-render'
-import ContentRender from '@/partials/content-render'
 import ModuleContent from '@/modules/content'
 
 import { stringToSlug } from '@/util'
@@ -24,7 +23,7 @@ const Experience = ({ item }) => {
           <HTMLRender tag='p' content={`<em class='soft'>${item.location} | ${`${monthNames[start.getMonth()]} ${start.getFullYear()} - ${end ? `${monthNames[end.getMonth()]} ${end.getFullYear()}` : 'Current'}`}</em>`} />
         </header>
 
-        <ContentRender content={item.content} />
+        <HTMLRender content={item.content} manipulateNodes />
       </div>
     </div>
   )

@@ -3,7 +3,6 @@ import { useForm, useWatch } from 'react-hook-form'
 import emailjs, { init } from 'emailjs-com'
 
 import HTMLRender from '@/partials/html-render'
-import ContentRender from '@/partials/content-render'
 
 import { stringToSlug, nl2br } from '@/util'
 
@@ -70,7 +69,7 @@ const Outcome = ({ emailError, error, success, setEmailSuccess, setEmailError, r
       <div className={styles.outcome}>
         <header>
           <HTMLRender tag='h2' content={heading} />
-          <ContentRender content={content} />
+          <HTMLRender content={content} manipulateNodes />
           <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{cta}</button></p>
         </header>
       </div>

@@ -4,7 +4,7 @@ import striptags from 'striptags'
 import preloadAll from 'jest-next-dynamic'
 import { render, screen, fireEvent } from '@testing-library/react'
 
-import ContentRender from '@/partials/content-render'
+import HTMLRender from '@/partials/html-render'
 import Nav from '@/partials/nav'
 import Meta from '@/partials/meta'
 import ModuleGroup from '@/partials/module-group'
@@ -17,44 +17,44 @@ beforeAll(async () => {
   await preloadAll()
 })
 
-describe('Partials ContentRender', () => {
-  it('null ContentRender', async () => {
-    render(<ContentRender />)
+describe('Partials HTMLRender', () => {
+  it('null HTMLRender', async () => {
+    render(<HTMLRender />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
-  it('null ContentRender: tag', async () => {
-    render(<ContentRender tag={data.contentTag} />)
+  it('null HTMLRender: tag', async () => {
+    render(<HTMLRender tag={data.contentTag} />)
     expect(screen.queryByText(/\w/)).toBeNull()
   })
 
-  it('ContentRender: content', async () => {
-    render(<ContentRender content={data.contentInTag} />)
+  it('HTMLRender: content', async () => {
+    render(<HTMLRender content={data.contentInTag} />)
     expect(screen.getByText(striptags(data.contentInTag))).toBeInTheDocument()
   })
 
-  it('ContentRender: content + tag', async () => {
-    render(<ContentRender content={data.content} tag={data.contentTag} />)
+  it('HTMLRender: content + tag', async () => {
+    render(<HTMLRender content={data.content} tag={data.contentTag} />)
     expect(screen.getByText(data.content)).toBeInTheDocument()
   })
 
-  it('ContentRender: content + tag + tagAttr{onClick}', async () => {
-    render(<ContentRender content={data.content} tag={data.contentTag} tagAttr={data.contentTagAttrOnClick} />)
+  it('HTMLRender: content + tag + tagAttr{onClick}', async () => {
+    render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={data.contentTagAttrOnClick} />)
     expect(screen.getByText(data.content)).toBeInTheDocument()
     fireEvent.click(screen.getByText(data.content))
     expect(data.contentTagAttrOnClick.onClick).toHaveBeenCalledTimes(1)
   })
 
-  it('ContentRender: content + tag + tagAttr{className}', async () => {
+  it('HTMLRender: content + tag + tagAttr{className}', async () => {
     const tagAttr = Object.assign({}, data.contentTagAttrClass)
-    const { container } = render(<ContentRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
+    const { container } = render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
     expect(screen.getByText(data.content)).toBeInTheDocument()
     expect(container).toMatchSnapshot()
   })
 
-  it('ContentRender: content + tag + tagAttr{className, ref}', async () => {
+  it('HTMLRender: content + tag + tagAttr{className, ref}', async () => {
     const tagAttr = Object.assign({}, data.contentTagAttrClassRef)
-    const { container } = render(<ContentRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
+    const { container } = render(<HTMLRender content={data.content} tag={data.contentTag} tagAttr={tagAttr} />)
     expect(screen.getByText(data.content)).toBeInTheDocument()
     expect(container).toMatchSnapshot()
   })

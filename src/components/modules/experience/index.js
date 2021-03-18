@@ -10,12 +10,13 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
-const Experience = ({ item }) => {
+const Experience = ({ item, type }) => {
   const start = new Date(item.start)
   const end = item.end ? new Date(item.end) : undefined
+  const slug = stringToSlug(item.company)
 
   return (
-    <div className={`cell _12 ${styles.block} ${experienceStyles.experience}`}>
+    <article id={`${type}-${slug}`} className={`cell _12 ${styles.block} ${experienceStyles.experience}`}>
       <div className='inner'>
         <header>
           <HTMLRender tag='h2' content={item.company} />
@@ -25,7 +26,7 @@ const Experience = ({ item }) => {
 
         <HTMLRender content={item.content} manipulateNodes />
       </div>
-    </div>
+    </article>
   )
 }
 
@@ -33,7 +34,7 @@ const Experiences = ({ type, items }) => {
   if (items && items.length) {
     return (
       <div className={`grid ${styles.blocks}`}>
-        {items.map((item, i) => <Experience key={`${item.company}-${item.role}`} item={item} />)}
+        {items.map((item, i) => <Experience key={`${item.company}-${item.role}`} item={item} type={type} />)}
       </div>
     )
   }

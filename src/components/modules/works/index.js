@@ -1,5 +1,7 @@
 // import Image from 'next/image'
 
+import { stringToSlug } from '@/util'
+
 import HTMLRender from '@/partials/html-render'
 import ModuleContent from '@/modules/content'
 import useSecretCode from '@/hooks/use-secret-code'
@@ -45,8 +47,10 @@ const WorkLinks = ({ links }) => {
 // }
 
 const Work = ({ item }) => {
+  const slug = stringToSlug(`${item.client} ${item.project}`)
+
   return (
-    <div className={`cell _12 ${styles.block} ${workStyles.work}`}>
+    <article id={slug} className={`cell _12 ${styles.block} ${workStyles.work}`}>
       <div className='inner'>
         <header>
           <HTMLRender tag='h2' content={item.client} />
@@ -55,7 +59,7 @@ const Work = ({ item }) => {
         <HTMLRender content={item.content} manipulateNodes />
         <WorkLinks links={item.links} />
       </div>
-    </div>
+    </article>
   )
 }
 
@@ -64,7 +68,7 @@ const Works = ({ items }) => {
 
   if (items && items.length) {
     return (
-      <div className={`grid ${styles.blocks}`}>
+      <div className={`grid ${styles.blocks}`} aria-live='polite' aria-relevant='additions'>
         {items.map((item, i) => {
           if (!item.hidden || showSecret) {
             // <Images images={item.images} />

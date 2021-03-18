@@ -18,7 +18,7 @@ const NavItem = ({ navItem, handleClick }) => {
 const Nav = ({ navItems, handleClick }) => {
   if (navItems && navItems.length) {
     return (
-      <nav className={styles.nav}>
+      <nav className={styles.nav} role='navigation'>
         <ul>
           {navItems.map((navItem, i) => <NavItem key={navItem.title} navItem={navItem} handleClick={handleClick} />)}
         </ul>

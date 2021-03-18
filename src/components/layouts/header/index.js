@@ -19,11 +19,11 @@ const Header = ({ menus }) => {
   const [navigating, setNavigating] = useState(false)
 
   return (
-    <header className={`${styles.header}${navigating ? ' navigating' : ''}`}>
+    <header className={`${styles.header}${navigating ? ' navigating' : ''}`} role='banner'>
       <Logo setNavigating={setNavigating} />
 
       <button className={styles.toggle} onClick={() => setNavigating(!navigating)}>
-        <span className='sr-only'>Menu</span>
+        <span className='sr-only'>{navigating ? 'Hide' : 'Show'} Menu</span>
         <span className='bar b1' />
         <span className='bar b2' />
       </button>

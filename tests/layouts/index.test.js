@@ -23,7 +23,7 @@ describe('Footer renders', () => {
 describe('Header renders', () => {
   it('null Header', async () => {
     render(<Header />)
-    expect(screen.getByText('Menu')).toBeInTheDocument()
+    expect(screen.getByText('Show Menu')).toBeInTheDocument()
   })
 
   it('Header: menus', async () => {

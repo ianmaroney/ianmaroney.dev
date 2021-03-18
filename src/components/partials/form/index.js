@@ -20,7 +20,7 @@ const Field = ({ title, type, size, control, register, errors, attributes }) => 
 
     return (
       <div className={`cell ${size}${errors && errors[name] ? ' err' : ''} field`}>
-        <DyanmicField type={typeAttr} className={value ? 'filled' : undefined} id={id} name={name} ref={register(registerObj)} {...attributes} aria-labelledby={id} aria-invalid={errors && errors[name] ? true : undefined} />
+        <DyanmicField type={typeAttr} className={value ? 'filled' : undefined} id={id} name={name} ref={register(registerObj)} {...attributes} aria-invalid={errors && errors[name] ? true : undefined} />
         <HTMLRender tag='label' content={title} tagAttr={{ htmlFor: id }} />
         {errors && errors[name] ? <p>{errors[name]}</p> : null}
       </div>

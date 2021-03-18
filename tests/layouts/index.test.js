@@ -29,7 +29,7 @@ describe('Header renders', () => {
   it('Header: menus', async () => {
     const menus = Object.assign({}, { main: data.navNavItems })
     render(<Header menus={menus} />)
-    expect(screen.getByText('Menu')).toBeInTheDocument()
+    expect(screen.getByText('Show Menu')).toBeInTheDocument()
     expect(screen.getByText(menus.main[0].title)).toBeInTheDocument()
   })
 })

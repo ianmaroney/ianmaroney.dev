@@ -6,7 +6,7 @@ const Meta = ({ page, globals }) => {
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' key='viewport' />
         <title key='title'>{`${page.title}${globals && globals.titleExtras ? ` - ${globals.titleExtras.join(' - ')}` : ''}`}</title>
-        <meta name='robots' content='noindex, nofollow' key='robots' />
+        <meta name='robots' content='index, follow' key='robots' />
       </Head>
     )
   }

@@ -1,20 +1,15 @@
 {
-  "main": [
-    {
-      "title": "Home",
-      "url": "/"
-    },
-    {
-      "title": "Experience",
-      "url": "/experience"
-    },
-    {
-      "title": "Works",
-      "url": "/works"
-    },
-    {
-      "title": "Contact",
-      "url": "/contact"
-    }
-  ]
+  "main": [{
+    "title": "Home",
+    "url": "/"
+  }, {
+    "title": "Experience",
+    "url": "/experience"
+  }, {
+    "title": "Works",
+    "url": "/works"
+  }, {
+    "title": "Contact",
+    "url": "/contact"
+  }]
 }

@@ -1,72 +1,61 @@
 {
-  "history": [
-    {
-      "company": "Truth Collective, LLC",
-      "role": "Creative Technologist",
-      "start": "2016-10-31",
-      "current": true,
-      "location": "Rochester, NY",
-      "content": "<ul><li>Concepting, scoping, and execution of digital experiences.</li><li>Sourcing, hiring, and oversight of development talent.</li><li>Provisioning, management, and cost-analysis of DevOps infrastructure.</li></ul>"
-    },
-    {
-      "company": "Rochester Advertising Federation",
-      "role": "Web Chair",
-      "start": "2016-07-01",
-      "end": "2018-08-01",
-      "location": "Rochester, NY",
-      "content": "<ul><li>Management of organization website</li><li>Creation and sending of email campaigns</li><li>Creation of event microsites and landing pages.</li></ul>"
-    },
-    {
-      "company": "St. John Fisher College",
-      "role": "Adjunct Professor, Intro to Web Development",
-      "start": "2016-01-01",
-      "end": "2016-05-31",
-      "location": "Rochester, NY"
-    },
-    {
-      "company": "Nazareth College",
-      "role": "Adjunct Professor, Intro to Web Development",
-      "start": "2015-08-01",
-      "end": "2015-12-31",
-      "location": "Rochester, NY"
-    },
-    {
-      "company": "Makeway, LLC",
-      "role": "Co-owner, Director of Development",
-      "start": "2011-03-01",
-      "end": "2016-10-30",
-      "location": "Rochester, NY",
-      "content": "<ul><li>Concepting, scoping, and execution of digital experiences.</li><li>Creation and management of custom client back-end systems.</li><li>Sourcing, hiring, and oversight of development talent.</li></ul>"
-    },
-    {
-      "company": "Fusion Reactions",
-      "role": "Web Director",
-      "start": "2010-06-01",
-      "end": "2011-03-01",
-      "location": "Rochester, NY"
-    },
-    {
-      "company": "Local Info Company",
-      "role": "Web Developer",
-      "start": "2009-09-01",
-      "end": "2010-06-01",
-      "location": "Rochester, NY"
-    },
-    {
-      "company": "Em2 Advertising",
-      "role": "Web Developer",
-      "start": "2008-05-01",
-      "end": "2009-09-01",
-      "location": "Rochester, NY"
-    }
-  ],
-  "education": [
-    {
-      "company": "Canisius College",
-      "role": "BA, Digital Media Arts; Fine Arts Minor",
-      "start": "2004-08-01",
-      "end": "2008-05-01",
-      "location": "Buffalo, NY"
-    }
-  ]
+  "history": [{
+    "company": "Truth Collective, LLC",
+    "role": "Creative Technologist",
+    "start": "2016-10-31",
+    "current": true,
+    "location": "Rochester, NY",
+    "content": "<ul><li>Concepting, scoping, and execution of digital experiences.</li><li>Sourcing, hiring, and oversight of development talent.</li><li>Provisioning, management, and cost-analysis of DevOps infrastructure.</li></ul>"
+  }, {
+    "company": "Rochester Advertising Federation",
+    "role": "Web Chair",
+    "start": "2016-07-01",
+    "end": "2018-08-01",
+    "location": "Rochester, NY",
+    "content": "<ul><li>Management of organization website</li><li>Creation and sending of email campaigns</li><li>Creation of event microsites and landing pages.</li></ul>"
+  }, {
+    "company": "St. John Fisher College",
+    "role": "Adjunct Professor, Intro to Web Development",
+    "start": "2016-01-01",
+    "end": "2016-05-31",
+    "location": "Rochester, NY"
+  }, {
+    "company": "Nazareth College",
+    "role": "Adjunct Professor, Intro to Web Development",
+    "start": "2015-08-01",
+    "end": "2015-12-31",
+    "location": "Rochester, NY"
+  }, {
+    "company": "Makeway, LLC",
+    "role": "Co-owner, Director of Development",
+    "start": "2011-03-01",
+    "end": "2016-10-30",
+    "location": "Rochester, NY",
+    "content": "<ul><li>Concepting, scoping, and execution of digital experiences.</li><li>Creation and management of custom client back-end systems.</li><li>Sourcing, hiring, and oversight of development talent.</li></ul>"
+  }, {
+    "company": "Fusion Reactions",
+    "role": "Web Director",
+    "start": "2010-06-01",
+    "end": "2011-03-01",
+    "location": "Rochester, NY"
+  }, {
+    "company": "Local Info Company",
+    "role": "Web Developer",
+    "start": "2009-09-01",
+    "end": "2010-06-01",
+    "location": "Rochester, NY"
+  }, {
+    "company": "Em2 Advertising",
+    "role": "Web Developer",
+    "start": "2008-05-01",
+    "end": "2009-09-01",
+    "location": "Rochester, NY"
+  }],
+  "education": [{
+    "company": "Canisius College",
+    "role": "BA, Digital Media Arts; Fine Arts Minor",
+    "start": "2004-08-01",
+    "end": "2008-05-01",
+    "location": "Buffalo, NY"
+  }]
 }

@@ -8,7 +8,7 @@ import styles from './index.module.scss'
 
 const Logo = ({ handleClick }) => {
   return (
-    <Link href='/' className={styles.brand}>
+    <Link href='/' className={styles.brand} prefetch={false}>
       <a onClick={handleClick}>
         I<span className='sr-only'>an </span>M<span className='sr-only'>aroney</span>
       </a>

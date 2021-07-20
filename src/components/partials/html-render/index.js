@@ -18,7 +18,7 @@ const replace = (node) => {
     delete passedProps.class
 
     return (
-      <Link key={node.key || `${node.attribs.href}`} href={href}><a {...passedProps}>{domToReact(node.children, { replace })}</a></Link>
+      <Link key={node.key || `${node.attribs.href}`} href={href} prefetch={false}><a {...passedProps}>{domToReact(node.children, { replace })}</a></Link>
     )
   }
 }

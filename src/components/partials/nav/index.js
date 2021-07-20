@@ -6,7 +6,7 @@ const NavItem = ({ navItem, handleClick }) => {
   if (navItem && navItem.title && navItem.url) {
     return (
       <li>
-        <Link href={navItem.url}>
+        <Link href={navItem.url} prefetch={false}>
           <a onClick={handleClick}>{navItem.title}</a>
         </Link>
       </li>

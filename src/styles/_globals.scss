@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Responsive breakpoints.
   @mixin breakpoint($breakpoint) {
     $query: 'screen and (' + $breakpoint-var + ': ' + $breakpoint + $breakpoint-measure + ')';
@@ -50,11 +52,11 @@
       $n: $n * 10;
     }
     @if $mode == round {
-      @return round($number * $n) / $n;
+      @return math.div(round($number * $n), $n);
     } @else if $mode == ceil {
-      @return ceil($number * $n) / $n;
+      @return math.div(ceil($number * $n), $n);
     } @else if $mode == floor {
-      @return floor($number * $n) / $n;
+      @return math.div(floor($number * $n), $n);
     } @else {
       @warn '#{$mode} is undefined keyword.';
       @return $number;

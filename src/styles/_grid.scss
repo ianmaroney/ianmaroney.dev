@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Grid.
 
   .grid {
@@ -205,7 +207,7 @@
     }
 
     @for $i from 1 through ($fg_columns - 1) {
-      $width: 100% * ($i / $fg_columns);
+      $width: 100% * math.div($i, $fg_columns);
 
       &._#{$i} {
         width: calc(100% * #{$i} / #{$fg_columns});
@@ -231,7 +233,7 @@
     // Cell Horizontal Spacing
 
     @for $i from 1 through ($fg_columns - 1) {
-      $width: 100% * ($i / $fg_columns);
+      $width: 100% * math.div($i, $fg_columns);
 
       &._#{$i}l {
         margin-left: calc(100% * #{$i} / #{$fg_columns});
@@ -306,7 +308,7 @@
         }
 
         @for $i from 1 through ($fg_columns - 1) {
-          $width: 100% * ($i / $fg_columns);
+          $width: 100% * math.div($i, $fg_columns);
 
           &.#{nth($fg_sizes, $s)}_#{$i} {
             width: calc(100% * #{$i} / #{$fg_columns});
@@ -348,7 +350,7 @@
         }
 
         @for $i from 1 through ($fg_columns - 1) {
-          $width: 100% * ($i / $fg_columns);
+          $width: 100% * math.div($i, $fg_columns);
 
           &.#{nth($fg_sizes, $s)}_#{$i}l {
             margin-left: calc(100% * #{$i} / #{$fg_columns});

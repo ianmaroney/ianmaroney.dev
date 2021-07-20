@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
+import { ErrorMessage } from '@hookform/error-message'
 import emailjs, { init } from 'emailjs-com'
 
 import HTMLRender from '@/partials/html-render'
@@ -9,24 +10,29 @@ import { stringToSlug, nl2br } from '@/util'
 import styles from './index.module.scss'
 
 const Field = ({ title, type, size, control, register, errors, attributes }) => {
-  if (title && type && size) {
-    const DyanmicField = type === 'textarea' ? 'textarea' : 'input'
-    const typeAttr = type === 'textarea' ? undefined : type
-    const name = stringToSlug(title, '_')
-    const id = stringToSlug(`${title} Input`)
-    const value = useWatch({ control, name, defaultValue: '' })
+  const DyanmicField = type === 'textarea' ? 'textarea' : 'input'
+  const typeAttr = type === 'textarea' ? undefined : type
+  const name = stringToSlug(title, '_')
+  const id = stringToSlug(`${title} Input`)
+  const value = useWatch({ control, name, defaultValue: '' })
 
-    const registerObj = Object.assign({}, attributes)
-
-    return (
-      <div className={`cell ${size}${errors && errors[name] ? ' err' : ''} field`}>
-        <DyanmicField type={typeAttr} className={value ? 'filled' : undefined} id={id} name={name} ref={register(registerObj)} {...attributes} aria-invalid={errors && errors[name] ? true : undefined} />
-        <HTMLRender tag='label' content={title} tagAttr={{ htmlFor: id }} />
-        {errors && errors[name] ? <p>{errors[name]}</p> : null}
-      </div>
-    )
+  const registerObj = Object.assign({}, attributes)
+  if (type === 'email') {
+    registerObj.pattern = {
+      value: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+      message: 'A valid email address is required.'
+    }
   }
-  return null
+
+  if (attributes.maxLength && typeof attributes.maxLength === 'object' && attributes.maxLength.value) attributes.maxLength = parseInt(attributes.maxLength.value)
+
+  return (
+    <div className={`cell ${size}${errors && errors[name] ? ' err' : ''} field`}>
+      <DyanmicField type={typeAttr} className={value ? 'filled' : undefined} id={id} name={name} ref={register(registerObj)} {...attributes} aria-invalid={errors && errors[name] ? true : undefined} />
+      <HTMLRender tag='label' content={title} tagAttr={{ htmlFor: id }} />
+      {errors && errors[name] ? <ErrorMessage errors={errors} name={name} render={({ message }) => <p className='error'>{message}</p>}/> : null}
+    </div>
+  )
 }
 
 const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
@@ -64,29 +70,27 @@ const Outcome = ({ emailError, error, success, setEmailSuccess, setEmailError, r
   const content = emailError ? `${error.content} <p class='error'>${emailError}</p>` : success.content
   const cta = emailError ? 'Try Again' : 'Send Another'
 
-  if (heading && content) {
-    return (
-      <div className={styles.outcome}>
-        <header>
-          <HTMLRender tag='h2' content={heading} />
-          <HTMLRender content={content} manipulateNodes />
-          <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{cta}</button></p>
-        </header>
-      </div>
-    )
-  }
+  return (
+    <div className={styles.outcome}>
+      <header>
+        <HTMLRender tag='h2' content={heading} />
+        <HTMLRender content={content} manipulateNodes />
+        <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{cta}</button></p>
+      </header>
+    </div>
+  )
 }
 
-const Form = ({ fields, success, error }) => {
+const Form = ({ fields, success, error, user }) => {
+  const { control, register, handleSubmit, errors, reset } = useForm()
   const [emailSuccess, setEmailSuccess] = useState()
   const [emailError, setEmailError] = useState()
 
   useEffect(() => {
-    init('user_5qUsnZBvRKWTm0OUW7SD9')
-  }, [])
+    init(user)
+  }, [user])
 
   if (fields && fields.length) {
-    const { control, register, handleSubmit, errors, reset } = useForm()
     const onSubmit = ({ name, email, message }) => sendFormEmail(name, email, nl2br(message), setEmailSuccess, setEmailError, reset)
 
     if (emailSuccess || emailError) {

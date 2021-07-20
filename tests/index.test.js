@@ -11,7 +11,8 @@ beforeAll(async () => {
 describe('Pages render', () => {
   it('/ - Home', async () => {
     const { render } = await getPage({
-      route: '/'
+      route: '/',
+      useDocument: true
     })
 
     render()
@@ -20,7 +21,8 @@ describe('Pages render', () => {
 
   it('/experience - Experience', async () => {
     const { render } = await getPage({
-      route: '/experience'
+      route: '/experience',
+      useDocument: true
     })
 
     render()
@@ -29,7 +31,8 @@ describe('Pages render', () => {
 
   it('/works - Works', async () => {
     const { render } = await getPage({
-      route: '/works'
+      route: '/works',
+      useDocument: true
     })
 
     render()
@@ -38,11 +41,11 @@ describe('Pages render', () => {
 
   it('/contact - Contact', async () => {
     const { render } = await getPage({
-      route: '/contact'
+      route: '/contact',
+      useDocument: true
     })
 
-    await render()
-
-    expect(screen.getByText('How to reach me')).toBeInTheDocument()
+    render()
+    expect(await screen.findByText('How to reach me')).toBeInTheDocument()
   })
 })

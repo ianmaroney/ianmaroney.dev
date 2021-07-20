@@ -30,8 +30,10 @@ const Experience = ({ item, type }) => {
   )
 }
 
-const Experiences = ({ type, items }) => {
-  if (items && items.length) {
+const Experiences = ({ type, experience }) => {
+  if (type && experience) {
+    const items = experience[type]
+
     return (
       <div className={`grid ${styles.blocks}`}>
         {items.map((item, i) => <Experience key={`${item.company}-${item.role}`} item={item} type={type} />)}
@@ -47,7 +49,7 @@ const ModuleExperience = ({ moduleData, experience }) => {
 
     return (
       <ModuleContent moduleData={moduleData}>
-        {experience && experienceType && experience[experienceType] ? <Experiences type={experienceType} items={experience[experienceType]} /> : null}
+        <Experiences type={experienceType} experience={experience} />
       </ModuleContent>
     )
   }

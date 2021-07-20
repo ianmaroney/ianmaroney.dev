@@ -29,51 +29,32 @@ const WorkLinks = ({ links }) => {
   return null
 }
 
-// const Images = ({ images }) => {
-//   if (images && images.length) {
-//     return (
-//       <div className='grid images'>
-//         {images.map((image, i) => {
-//           return (
-//             <figure key={`${i} ${image.alt}`} className='cell _12 md_6'>
-//               <Image src={`/images/${image.src}`} alt={image.alt} layout='responsive' width={image.width} height={image.height} />
-//             </figure>
-//           )
-//         })}
-//       </div>
-//     )
-//   }
-//   return null
-// }
-
-const Work = ({ item }) => {
-  const slug = stringToSlug(`${item.client} ${item.project}`)
+const Work = ({ work }) => {
+  const slug = stringToSlug(`${work.client} ${work.project}`)
 
   return (
     <article id={slug} className={`cell _12 ${styles.block} ${workStyles.work}`}>
       <div className='inner'>
         <header>
-          <HTMLRender tag='h2' content={item.client} />
-          <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={item.project} />
+          <HTMLRender tag='h2' content={work.client} />
+          <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={work.project} />
         </header>
-        <HTMLRender content={item.content} manipulateNodes />
-        <WorkLinks links={item.links} />
+        <HTMLRender content={work.content} manipulateNodes />
+        <WorkLinks links={work.links} />
       </div>
     </article>
   )
 }
 
-const Works = ({ items }) => {
+const Works = ({ works }) => {
   const showSecret = useSecretCode(['KeyP', 'KeyS', 'KeyS', 'KeyT', 'Enter'])
 
-  if (items && items.length) {
+  if (works && works.length) {
     return (
       <div className={`grid ${styles.blocks}`} aria-live='polite' aria-relevant='additions'>
-        {items.map((item, i) => {
-          if (!item.hidden || showSecret) {
-            // <Images images={item.images} />
-
-            return <Work key={`${item.client}-${item.role}`} item={item} />
+        {works.map((work, i) => {
+          if (!work.hidden || showSecret) {
+            return <Work key={`${work.client}-${work.role}`} work={work} />
           }
           return null
         })}
@@ -87,7 +68,7 @@ const ModuleWorks = ({ moduleData, works }) => {
   if (moduleData) {
     return (
       <ModuleContent moduleData={moduleData}>
-        {works && works.works ? <Works items={works.works} /> : null}
+        <Works works={works} />
       </ModuleContent>
     )
   }

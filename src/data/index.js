@@ -12,13 +12,9 @@ export async function getData (pageSlug, hasExtras = false) {
 
   if (page && hasExtras) {
     const rawExtraData = fs.readFileSync(`./data/${pageSlug}/index.json`)
-    if (rawExtraData) {
-      const extras = JSON.parse(rawExtraData)
-      page.extras = { [pageSlug]: extras }
-    }
+    const extras = JSON.parse(rawExtraData)
+    page.extras = { [pageSlug]: extras }
   }
-
-  // console.log('getData page', page)
 
   return {
     props: {

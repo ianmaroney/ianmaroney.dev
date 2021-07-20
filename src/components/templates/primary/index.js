@@ -4,7 +4,7 @@ import Meta from '@/partials/meta'
 import Header from '@/layouts/header'
 import Footer from '@/layouts/footer'
 
-const Primary = memo(({ page, globals, menus, children }) => {
+const Primary = ({ page, globals, menus, children }) => {
   if (page && children) {
     return (
       <>
@@ -16,6 +16,6 @@ const Primary = memo(({ page, globals, menus, children }) => {
     )
   }
   return null
-})
+}
 
-export default Primary
+export default memo(Primary)

@@ -6,52 +6,54 @@ const moduleData = {
   title: 'Content',
   heading: 'Heading',
   content: '<p>Content.</p>',
-  blocks: [
-    {
-      title: 'Content Block',
-      heading: 'Block Heading',
-      content: '<p>Block content.</p>'
-    }
-  ]
+  blocks: [{
+    title: 'Content Block',
+    heading: 'Block Heading',
+    content: '<p>Block content.</p>'
+  }]
+}
+
+const moduleDataNoBlocks = {
+  title: 'Content',
+  heading: 'Heading',
+  content: '<p>Content.</p>'
 }
 
 const experienceData = {
-  content: [
-    {
-      company: 'Experience Company',
-      role: 'Experience Role',
-      start: '2021-03-01',
-      current: true,
-      location: 'Experience City, EX',
-      content: '<p>Experience content.</p>'
-    },
-    {
-      company: 'Experience Company 2',
-      role: 'Experience Role 2',
-      start: '2021-01-01',
-      end: '2021-02-28',
-      location: 'Experience City 2, EX2',
-      content: '<p>Experience content 2.</p>'
-    }
-  ]
+  content: [{
+    company: 'Experience Company',
+    role: 'Experience Role',
+    start: '2021-03-01',
+    current: true,
+    location: 'Experience City, EX',
+    content: '<p>Experience content.</p>'
+  },
+  {
+    company: 'Experience Company 2',
+    role: 'Experience Role 2',
+    start: '2021-01-01',
+    end: '2021-02-28',
+    location: 'Experience City 2, EX2',
+    content: '<p>Experience content 2.</p>'
+  }]
 }
 
-const worksData = {
-  works: [
-    {
-      client: 'Works Client',
-      project: 'Works Project',
-      links: [
-        {
-          title: 'Campaign Website',
-          label: 'View demo',
-          url: 'https://google.com'
-        }
-      ],
-      content: '<p>Works content.</p>'
-    }
-  ]
-}
+const worksData = [{
+  client: 'Works Client',
+  project: 'Works Project',
+  links: [{
+    title: 'Campaign Website',
+    label: 'View demo',
+    url: 'https://google.com'
+  }],
+  content: '<p>Works content.</p>'
+}]
+
+const worksDataNoLinks = [{
+  client: 'Works Client',
+  project: 'Works Project',
+  content: '<p>Works content.</p>'
+}]
 
 const content = 'Content.'
 const contentTag = 'p'
@@ -95,36 +97,31 @@ const moduleGroupModuleGroup = {
     title: 'Content',
     heading: 'Heading',
     content: '<p>Content.</p>',
-    blocks: [
-      {
-        title: 'Content Block',
-        heading: 'Block Heading',
-        content: '<p>Block content.</p>'
-      }
-    ]
+    blocks: [{
+      title: 'Content Block',
+      heading: 'Block Heading',
+      content: '<p>Block content.</p>'
+    }]
   }]
 }
 
 const moduleGroupExtras = {
   experience: {
-    content: [
-      {
-        company: 'Experience Company',
-        role: 'Experience Role',
-        start: '2021-03-01',
-        current: true,
-        location: 'Experience City, EX',
-        content: '<p>Experience content.</p>'
-      },
-      {
-        company: 'Experience Company 2',
-        role: 'Experience Role 2',
-        start: '2021-01-01',
-        end: '2021-02-28',
-        location: 'Experience City 2, EX2',
-        content: '<p>Experience content 2.</p>'
-      }
-    ]
+    content: [{
+      company: 'Experience Company',
+      role: 'Experience Role',
+      start: '2021-03-01',
+      current: true,
+      location: 'Experience City, EX',
+      content: '<p>Experience content.</p>'
+    }, {
+      company: 'Experience Company 2',
+      role: 'Experience Role 2',
+      start: '2021-01-01',
+      end: '2021-02-28',
+      location: 'Experience City 2, EX2',
+      content: '<p>Experience content 2.</p>'
+    }]
   }
 }
 
@@ -138,35 +135,37 @@ const moduleGroupsPage = {
 }
 
 const formData = {
-  fields: [
-    {
-      title: 'Name',
-      type: 'text',
-      size: '_12 md_6',
-      attributes: {
-        maxLength: 64,
-        required: true
-      }
-    },
-    {
-      title: 'Email',
-      type: 'email',
-      size: '_12 md_6',
-      attributes: {
-        maxLength: 128,
-        required: true
-      }
-    },
-    {
-      title: 'Message',
-      type: 'textarea',
-      size: '_12',
-      attributes: {
-        required: true,
-        rows: 6
-      }
+  fields: [{
+    title: 'Name',
+    type: 'text',
+    size: '_12 md_6',
+    attributes: {
+      maxLength: {
+        value: 64,
+        message: 'Name must be 64 characters or less.'
+      },
+      required: 'A name is required.'
     }
-  ],
+  }, {
+    title: 'Email',
+    type: 'email',
+    size: '_12 md_6',
+    attributes: {
+      maxLength: {
+        value: 128,
+        message: 'Email must be 128 characters or less.'
+      },
+      required: 'An email address is required.'
+    }
+  }, {
+    title: 'Message',
+    type: 'textarea',
+    size: '_12',
+    attributes: {
+      required: 'A message is required.',
+      rows: 6
+    }
+  }],
   success: {
     heading: 'Success',
     content: '<p>Success explanation.</p>'
@@ -179,8 +178,10 @@ const formData = {
 
 module.exports = {
   moduleData,
+  moduleDataNoBlocks,
   experienceData,
   worksData,
+  worksDataNoLinks,
   content,
   contentTag,
   contentTagAttrClass,

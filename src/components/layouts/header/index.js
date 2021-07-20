@@ -6,10 +6,12 @@ import Nav from '@/partials/nav'
 
 import styles from './index.module.scss'
 
-const Logo = ({ setNavigating }) => {
+const Logo = ({ handleClick }) => {
   return (
     <Link href='/' className={styles.brand}>
-      <a onClick={e => setNavigating(false)}>I<span className='sr-only'>an </span>M<span className='sr-only'>aroney</span></a>
+      <a onClick={handleClick}>
+        I<span className='sr-only'>an </span>M<span className='sr-only'>aroney</span>
+      </a>
     </Link>
   )
 }
@@ -19,9 +21,11 @@ const Header = ({ menus }) => {
   const [navigating, setNavigating] = useState(false)
   const [transition, setTransition] = useState(false)
 
+  const handleClick = () => setNavigating(false)
+
   return (
-      <Logo setNavigating={setNavigating} />
     <header className={`${styles.header}${navigating ? ' navigating' : ''}${transition ? ' t' : ''}`} role='banner'>
+      <Logo handleClick={handleClick} />
 
       <button className={styles.toggle} onClick={() => setNavigating(!navigating)} onMouseEnter={() => setTransition(true)} onFocus={() => setTransition(true)}>
         <span className='sr-only'>{navigating ? 'Hide' : 'Show'} Menu</span>
@@ -29,7 +33,7 @@ const Header = ({ menus }) => {
         <span className='bar b2' />
       </button>
 
-      <Nav navItems={navItems} handleClick={e => setNavigating(false)} />
+      <Nav navItems={navItems} handleClick={handleClick} />
     </header>
   )
 }

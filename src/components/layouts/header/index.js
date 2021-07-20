@@ -17,12 +17,13 @@ const Logo = ({ setNavigating }) => {
 const Header = ({ menus }) => {
   const navItems = menus && menus.main ? menus.main : []
   const [navigating, setNavigating] = useState(false)
+  const [transition, setTransition] = useState(false)
 
   return (
-    <header className={`${styles.header}${navigating ? ' navigating' : ''}`} role='banner'>
       <Logo setNavigating={setNavigating} />
+    <header className={`${styles.header}${navigating ? ' navigating' : ''}${transition ? ' t' : ''}`} role='banner'>
 
-      <button className={styles.toggle} onClick={() => setNavigating(!navigating)}>
+      <button className={styles.toggle} onClick={() => setNavigating(!navigating)} onMouseEnter={() => setTransition(true)} onFocus={() => setTransition(true)}>
         <span className='sr-only'>{navigating ? 'Hide' : 'Show'} Menu</span>
         <span className='bar b1' />
         <span className='bar b2' />

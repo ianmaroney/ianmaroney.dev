@@ -1,66 +1,36 @@
-import { cloneElement, useMemo, Fragment } from 'react'
-import parse from 'html-react-parser'
-import xss from 'xss'
+import { memo, Fragment } from 'react'
+import parse, { domToReact } from 'html-react-parser'
 
-import { getDefaultWhiteList, isLocalURL } from '@/util'
+import { isLocalURL, trimURL } from '@/util'
 
 import Link from 'next/link'
 
-const manipulateTheNodes = (nodes) => {
-  if (!nodes.length) return nodes
+const replace = (node) => {
+  if (node.name && node.name === 'a' && node.attribs && node.attribs.href && isLocalURL(node.attribs.href)) {
+    const href = trimURL(node.attribs.href)
+    const passedProps = Object.assign({}, node.attribs)
 
-  const manipulatedNodes = []
+    passedProps.className = passedProps.class
 
-  for (let i = 0; i < nodes.length; i++) {
-    const node = nodes[i]
+    delete passedProps.href
+    delete passedProps.target
+    delete passedProps.rel
+    delete passedProps.class
 
-    if (typeof node === 'string') {
-      const trimmedNode = node.trim()
-
-      if (trimmedNode.length) {
-        const modifiedNode = parse(node)
-
-        manipulatedNodes.push(modifiedNode)
-      }
-    } else if (typeof node === 'object' && node.props && node.props.children) {
-      if (node.type && node.type === 'a' && node.props.href && isLocalURL(node.props.href)) {
-        const passedProps = Object.assign({}, node.props)
-        delete passedProps.href
-
-        manipulatedNodes.push(<Link key={node.key ? node.key : `${node.props.href}-${i}`} href={node.props.href}><a {...passedProps} data-next='link'>{node.props.children}</a></Link>)
-      } else if (node.type && node.type === 'a') {
-        manipulatedNodes.push(node)
-      } else {
-        const clonedNode = cloneElement(node, {
-          children: manipulateTheNodes([].concat(node.props.children)),
-          key: node.key ? node.key : `${node.type}-${i}`
-        })
-
-        manipulatedNodes.push(clonedNode)
-      }
-    }
+    return (
+      <Link key={node.key || `${node.attribs.href}`} href={href}><a {...passedProps}>{domToReact(node.children, { replace })}</a></Link>
+    )
   }
-  return manipulatedNodes
 }
 
 const HTMLRender = ({ content, manipulateNodes = false, tag, tagAttr = {} }) => {
   if (content) {
-    const options = { whiteList: getDefaultWhiteList }
-    const sanitizedContent = xss(content, options)
-
-    let parsedContent = parse(sanitizedContent)
-    if (manipulateNodes) {
-      parsedContent = Array.isArray(parsedContent) ? parsedContent : [parsedContent]
-
-      const modifiedNodes = useMemo(() => manipulateTheNodes(parsedContent), [content])
-
-      parsedContent = modifiedNodes
-    }
-
     const Tag = tag || Fragment
+    const parsedContent = parse(content, { replace })
+
     return <Tag {...tagAttr}>{parsedContent}</Tag>
   }
   return null
 }
 
-export default HTMLRender
+export default memo(HTMLRender)

@@ -16,8 +16,6 @@
   left: 0;
   opacity: 0;
   pointer-events: none;
-  z-index: -5;
-  transition: opacity ($duration-transition * 1.5) $easing ($duration-transition * 0.5);
 
   ul {
     padding: 0;
@@ -32,9 +30,15 @@
   }
 
   :global(.navigating) & {
-    z-index: 1;
     opacity: 1;
     pointer-events: all;
+  }
+
+  :global(.t) & {
+    transition: opacity ($duration-transition * 1.5) $easing ($duration-transition * 0.5);
+  }
+
+  :global(.t.navigating) & {
     transition: opacity ($duration-transition * 1.5) $easing ($duration-transition * 1);
   }
 }

@@ -1,5 +1,18 @@
 import { basePath } from '@/config'
 
+RegExp.quote = (str) => {
+  return str.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1')
+}
+
+const root = 'http://localhost:3000'
+const quotedRoot = RegExp.quote(root)
+const rootsRegex = new RegExp(`^${quotedRoot}`, 'i')
+
+export const trimURL = (url) => {
+  if (!url || typeof url !== 'string') return url
+  return url.replace(rootsRegex, '').replace(/\/$/, '')
+}
+
 export const stringToSlug = (str, separator = '-') => {
   if (str) {
     str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -28,10 +41,10 @@ export const stringToSlug = (str, separator = '-') => {
 
 export function getLocationOrigin () {
   const { protocol, hostname, port } = window.location
-  return `${protocol}//${hostname}${port ? ':' + port : ''}`
+  return `${protocol}//${hostname}${port ? `:${port}` : ''}`
 }
 
-export function hasBasePath (path) {
+export function hasBasePath (path, basePath) {
   return path === basePath || path.startsWith(`${basePath}/`)
 }
 
@@ -45,80 +58,13 @@ export function isLocalURL (url) {
     // absolute urls can be local if they are on the same origin
     const locationOrigin = getLocationOrigin()
     const resolved = new URL(url, locationOrigin)
-    return resolved.origin === locationOrigin && hasBasePath(resolved.pathname) && validExtension(resolved.pathname)
+    return resolved.origin === locationOrigin && hasBasePath(resolved.pathname, basePath) && validExtension(resolved.pathname)
   } catch (_) {
     return false
   }
 }
 
-export const getDefaultWhiteList = {
-  a: ['target', 'href', 'title', 'class'],
-  abbr: ['title', 'class'],
-  address: ['class'],
-  area: ['shape', 'coords', 'href', 'alt', 'class'],
-  article: ['class'],
-  aside: ['class'],
-  audio: ['autoplay', 'controls', 'loop', 'preload', 'src', 'class'],
-  b: ['class'],
-  bdi: ['dir', 'class'],
-  bdo: ['dir', 'class'],
-  big: ['class'],
-  blockquote: ['cite', 'class'],
-  br: ['class'],
-  caption: ['class'],
-  center: ['class'],
-  cite: ['class'],
-  code: ['class'],
-  col: ['align', 'valign', 'span', 'width', 'class'],
-  colgroup: ['align', 'valign', 'span', 'width', 'class'],
-  dd: ['class'],
-  del: ['datetime', 'class'],
-  details: ['open', 'class'],
-  div: ['class'],
-  dl: ['class'],
-  dt: ['class'],
-  em: ['class'],
-  font: ['color', 'size', 'face', 'class'],
-  footer: ['class'],
-  h1: ['class'],
-  h2: ['class'],
-  h3: ['class'],
-  h4: ['class'],
-  h5: ['class'],
-  h6: ['class'],
-  header: ['class'],
-  hr: ['class'],
-  i: ['class'],
-  img: ['src', 'alt', 'title', 'width', 'height', 'class', 'srcSet'],
-  ins: ['datetime', 'class'],
-  li: ['class'],
-  mark: ['class'],
-  nav: ['class'],
-  ol: ['class'],
-  p: ['class'],
-  pre: ['class'],
-  s: ['class'],
-  section: ['class'],
-  small: ['class'],
-  span: ['class'],
-  sub: ['class'],
-  sup: ['class'],
-  strong: ['class'],
-  table: ['width', 'border', 'align', 'valign', 'class'],
-  tbody: ['align', 'valign', 'class'],
-  td: ['width', 'rowspan', 'colspan', 'align', 'valign', 'class'],
-  tfoot: ['align', 'valign', 'class'],
-  th: ['width', 'rowspan', 'colspan', 'align', 'valign', 'class'],
-  thead: ['align', 'valign', 'class'],
-  tr: ['rowspan', 'align', 'valign', 'class'],
-  tt: ['class'],
-  u: ['class'],
-  ul: ['class'],
-  video: ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class']
-}
-
-export const nl2br = (str, isXhtml) => {
+export const nl2br = (str) => {
   if (typeof str === 'undefined' || str === null) return ''
-  const breakTag = (isXhtml || typeof isXhtml === 'undefined') ? '<br ' + '/>' : '<br>'
-  return (str + '').replace(/(\r\n|\n\r|\r|\n)/g, breakTag + '$1')
+  return (str + '').replace(/(\r\n|\n\r|\r|\n)/g, '<br />' + '$1')
 }

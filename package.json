@@ -10,7 +10,7 @@
     "export": "npm run clean && next build && next export",
     "lint": "next lint",
     "start": "next start",
-    "test": "jest --env=jsdom --silent --coverage"
+    "test": "jest --ci --env=jsdom --silent --coverage && codecov"
   },
   "dependencies": {
     "@hookform/error-message": "^1.1.0",

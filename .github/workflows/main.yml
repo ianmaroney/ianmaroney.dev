@@ -55,6 +55,11 @@ jobs:
       - name: Run export
         run: npm run export
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }
+
       - name: Deploy to S3
         uses: reggionick/s3-deploy@v3
         with:

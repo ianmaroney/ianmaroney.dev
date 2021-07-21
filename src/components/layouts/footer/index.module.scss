@@ -15,5 +15,9 @@
     margin: 0;
     font-size: 1rem;
     text-align: right;
+
+    &:global(.soft) {
+      padding-right: 1rem;
+    }
   }
 }

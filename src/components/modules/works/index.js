@@ -9,6 +9,11 @@ import useSecretCode from '@/hooks/use-secret-code'
 import styles from '../content-blocks/index.module.scss'
 import workStyles from './index.module.scss'
 
+/**
+ * A titled link in element within a project.
+ * @param {link} object The link data.
+ * @return {node}
+ */
 const WorkLink = ({ link }) => {
   return (
     <div className='cell _12 smmd_6'>
@@ -18,6 +23,11 @@ const WorkLink = ({ link }) => {
   )
 }
 
+/**
+ * A grid of titled links within a project in the grid of projects.
+ * @param {array} links An array of link objects.
+ * @return {node}
+ */
 const WorkLinks = ({ links }) => {
   if (links && links.length) {
     return (
@@ -29,6 +39,11 @@ const WorkLinks = ({ links }) => {
   return null
 }
 
+/**
+ * A project in the grid of projects.
+ * @param {item} object The project data.
+ * @return {node}
+ */
 const Work = ({ work }) => {
   const slug = stringToSlug(`${work.client} ${work.project}`)
 
@@ -39,13 +54,18 @@ const Work = ({ work }) => {
           <HTMLRender tag='h2' content={work.client} />
           <HTMLRender tag='p' tagAttr={{ className: 'soft' }} content={work.project} />
         </header>
-        <HTMLRender content={work.content} manipulateNodes />
+        <HTMLRender content={work.content} />
         <WorkLinks links={work.links} />
       </div>
     </article>
   )
 }
 
+/**
+ * The grid of projects.
+ * @param {object} experience The array of projects.
+ * @return {node}
+ */
 const Works = ({ works }) => {
   const showSecret = useSecretCode(['KeyP', 'KeyS', 'KeyS', 'KeyT', 'Enter'])
 
@@ -64,6 +84,12 @@ const Works = ({ works }) => {
   return null
 }
 
+/**
+ * Adding to `<ModuleContent />`, this adds a configurable flexbox grid of projects.
+ * @param {object} moduleData The module's data.
+ * @param {array} works An array of project objects.
+ * @return {node}
+ */
 const ModuleWorks = ({ moduleData, works }) => {
   if (moduleData) {
     return (

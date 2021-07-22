@@ -1,5 +1,11 @@
 import fs from 'fs'
 
+/**
+ * Get standardized data as static `pageProps` for a slug-referenced page in `/src/pages`.
+ * @param {string} pageSlug The slug for the simple page path to get data for.
+ * @param {bool} hasExtras Boolean flag to indicate this page has self-titled extras.
+ * @return {object}
+ */
 export async function getData (pageSlug, hasExtras = false) {
   const rawGlobalData = fs.readFileSync('./data/globals/index.json')
   const globals = JSON.parse(rawGlobalData)

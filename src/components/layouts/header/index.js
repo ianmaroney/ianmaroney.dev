@@ -6,6 +6,11 @@ import Nav from '@/partials/nav'
 
 import styles from './index.module.scss'
 
+/**
+ * The logotype within the site-wide `<header />` element.
+ * @param {func} handleClick An onClick event for the logotype on the <header />.
+ * @return {node}
+ */
 const Logo = ({ handleClick }) => {
   return (
     <Link href='/' className={styles.brand} prefetch={false}>
@@ -16,6 +21,11 @@ const Logo = ({ handleClick }) => {
   )
 }
 
+/**
+ * The site-wide `<header />` element.
+ * @param {object} menus Menus data.
+ * @return {node}
+ */
 const Header = ({ menus }) => {
   const navItems = menus && menus.main ? menus.main : []
   const [navigating, setNavigating] = useState(false)

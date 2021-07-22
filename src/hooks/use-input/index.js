@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 
+/**
+ * A React hook to watch keyboard interaction and return keycode values.
+ * @return {string}
+ */
 export const useInputEvent = () => {
   const [key, setKey] = useState(null)
 

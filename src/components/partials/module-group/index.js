@@ -9,6 +9,11 @@ const moduleTypes = {
   works: dynamic(() => import('@/modules/works'))
 }
 
+/**
+ * Loop through and return an array of dynamically loaded page modules, within a module group.
+ * @param {object} moduleGroup The moduleGroup data data.
+ * @return {node}
+ */
 const ModuleGroup = ({ moduleGroup, extras }) => {
   if (moduleGroup && moduleGroup.modules && moduleGroup.modules.length) {
     const modules = moduleGroup.modules

@@ -2,6 +2,12 @@ import Link from 'next/link'
 
 import styles from './index.module.scss'
 
+/**
+ * Nav items within the site-wide `<nav />` element.
+ * @param {array} navItems An array of nav item objects.
+ * @param {func} handleClick An onClick event to be assigned to each nav item.
+ * @return {node}
+ */
 const NavItem = ({ navItem, handleClick }) => {
   if (navItem && navItem.title && navItem.url) {
     return (
@@ -15,6 +21,12 @@ const NavItem = ({ navItem, handleClick }) => {
   return null
 }
 
+/**
+ * The site-wide `<nav />` element.
+ * @param {array} navItems An array of nav item objects.
+ * @param {func} handleClick An onClick event to be assigned to each nav item.
+ * @return {node}
+ */
 const Nav = ({ navItems, handleClick }) => {
   if (navItems && navItems.length) {
     return (

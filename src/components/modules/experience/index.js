@@ -10,6 +10,12 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
 
+/**
+ * An experience record in the grid of experience records.
+ * @param {item} object The experience record data.
+ * @param {string} type The type of experience record.
+ * @return {node}
+ */
 const Experience = ({ item, type }) => {
   const start = new Date(item.start)
   const end = item.end ? new Date(item.end) : undefined
@@ -24,12 +30,18 @@ const Experience = ({ item, type }) => {
           <HTMLRender tag='p' content={`<em class='soft'>${item.location} | ${`${monthNames[start.getMonth()]} ${start.getFullYear()} - ${end ? `${monthNames[end.getMonth()]} ${end.getFullYear()}` : 'Current'}`}</em>`} />
         </header>
 
-        <HTMLRender content={item.content} manipulateNodes />
+        <HTMLRender content={item.content} />
       </div>
     </article>
   )
 }
 
+/**
+ * The grid of experience records.
+ * @param {string} type The experience type to render within the grid.
+ * @param {object} experience All experience data.
+ * @return {node}
+ */
 const Experiences = ({ type, experience }) => {
   if (type && experience) {
     const items = experience[type]
@@ -43,6 +55,12 @@ const Experiences = ({ type, experience }) => {
   return null
 }
 
+/**
+ * Adding to `<ModuleContent />`, this adds a configurable grid of experience records.
+ * @param {object} moduleData The module's data.
+ * @param {object} experience All experience data.
+ * @return {node}
+ */
 const ModuleExperience = ({ moduleData, experience }) => {
   if (moduleData) {
     const experienceType = stringToSlug(moduleData.title)

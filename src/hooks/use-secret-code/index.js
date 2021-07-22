@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useInputEvent } from '@/hooks/use-input'
 
+/**
+ * Monitor keyboard input for the entry of a "secret" code and return success state.
+ * @param {array} secretCode An array of keycodes to watch for.
+ * @return {bool}.
+ */
 const useSecretCode = (secretCode) => {
   const [count, setCount] = useState(0)
   const [success, setSuccess] = useState(false)

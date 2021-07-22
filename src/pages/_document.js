@@ -1,5 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+/**
+ * Customize the site-wide HTML template.
+ * @return {node}
+ */
 class MyDocument extends Document {
   render () {
     return (

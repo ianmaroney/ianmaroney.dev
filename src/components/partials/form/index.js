@@ -9,6 +9,17 @@ import { stringToSlug, nl2br } from '@/util'
 
 import styles from './index.module.scss'
 
+/**
+ * A field within the contact `<form />` grid of fields.
+ * @param {string} title The field's title.
+ * @param {string} type The field's type attribute.
+ * @param {string} size The field's container class. Controls grid sizing.
+ * @param {object} control Object of methods for registering components from `react-hook-form`
+ * @param {func} register Function for registering a field from `react-hook-form`
+ * @param {object} errors Object containing validation errors.
+ * @param {object} attributes Object additional attributes to pass to the field node.
+ * @return {node}
+ */
 const Field = ({ title, type, size, control, register, errors, attributes }) => {
   const DyanmicField = type === 'textarea' ? 'textarea' : 'input'
   const typeAttr = type === 'textarea' ? undefined : type
@@ -35,6 +46,15 @@ const Field = ({ title, type, size, control, register, errors, attributes }) => 
   )
 }
 
+/**
+ * Send the content of the `<form />` via `emailjs`. Handles errors as well.
+ * @param {string} name The name field value.
+ * @param {string} email The email field value.
+ * @param {string} message The message field value.
+ * @param {func} setSuccess setter from useState responsible for success state.
+ * @param {func} setError setter from useState responsible for error state.
+ * @return {promise}
+ */
 const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
   const templateParams = {
     from_name: name,
@@ -53,6 +73,14 @@ const sendFormEmail = (name, email, message, setSuccess, setError, reset) => {
     })
 }
 
+/**
+ * The grid of fields within the contact `<form />`.
+ * @param {array} fields Array of field objects.
+ * @param {object} control Object of methods for registering components from `react-hook-form`
+ * @param {func} register Function for registering a field from `react-hook-form`
+ * @param {object} errors Object containing validation errors.
+ * @return {node}
+ */
 const Fields = ({ fields, control, register, errors }) => {
   return (
     <div className='grid fields'>
@@ -65,6 +93,16 @@ const Fields = ({ fields, control, register, errors }) => {
   )
 }
 
+/**
+ * The outcome message for the `<form />`.
+ * @param {string} emailError A single form validation error message.
+ * @param {object} error An object of error outcome message data.
+ * @param {object} success An object of success outcome message data.
+ * @param {func} setEmailSuccess setter from useState responsible for success state.
+ * @param {func} setEmailError setter from useState responsible for error state.
+ * @param {func} reset The reset function from `react-hook-form`.
+ * @return {node}
+ */
 const Outcome = ({ emailError, error, success, setEmailSuccess, setEmailError, reset }) => {
   const heading = emailError ? error.heading : success.heading
   const content = emailError ? `${error.content} <p class='error'>${emailError}</p>` : success.content
@@ -74,13 +112,21 @@ const Outcome = ({ emailError, error, success, setEmailSuccess, setEmailError, r
     <div className={styles.outcome}>
       <header>
         <HTMLRender tag='h2' content={heading} />
-        <HTMLRender content={content} manipulateNodes />
+        <HTMLRender content={content} />
         <p><button className='button' onClick={() => { setEmailSuccess(undefined); setEmailError(undefined); reset() }}>{cta}</button></p>
       </header>
     </div>
   )
 }
 
+/**
+ * The contact `<form />` on the `/contact/` page. Sends a email with the form data via emailjs.
+ * @param {array} fields Array of form field objects.
+ * @param {object} success An object of success outcome message data.
+ * @param {object} error An object of error outcome message data.
+ * @param {string} user The user id to initialize emailjs with.
+ * @return {node}
+ */
 const Form = ({ fields, success, error, user }) => {
   const { control, register, handleSubmit, errors, reset } = useForm()
   const [emailSuccess, setEmailSuccess] = useState()

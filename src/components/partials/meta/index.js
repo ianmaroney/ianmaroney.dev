@@ -1,5 +1,11 @@
 import Head from 'next/head'
 
+/**
+ * Dynamic `<meta />` tags for pages within `/src/pages`.
+ * @param {object} page Page data.
+ * @param {object} globals Global site-wide data.
+ * @return {node}
+ */
 const Meta = ({ page, globals }) => {
   if (page && page.title) {
     return (

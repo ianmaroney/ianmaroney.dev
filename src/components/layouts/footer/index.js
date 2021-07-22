@@ -1,6 +1,10 @@
 import styles from './index.module.scss'
 
-const Footer = (props) => {
+/**
+ * The site-wide `<footer />` element.
+ * @return {node}
+ */
+const Footer = () => {
   return (
     <footer className={styles.footer} role='contentinfo'>
       <p>✌️</p>

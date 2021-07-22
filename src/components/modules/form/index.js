@@ -1,6 +1,11 @@
 import Form from '@/partials/form'
 import ModuleContent from '@/modules/content'
 
+/**
+ * Adding to `<ModuleContent />`, this adds a contact `<form />`.
+ * @param {object} moduleData The module's data.
+ * @return {node}
+ */
 const ModuleForm = ({ moduleData }) => {
   if (moduleData) {
     return (

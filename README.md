@@ -44,7 +44,7 @@ npm run test
 
 ## Deployment 🤲
 
-The exported production build is deployed to an s3 bucket behind a CloudFront distribution each time the `master` branch is pushed/pulled via GitHub workflow.
+The exported production build is deployed to an s3 bucket behind a CloudFront distribution each time the `master` branch is pushed/pulled via [GitHub workflow](https://github.com/ianmaroney/ianmaroney.dev/blob/master/.github/workflows/main.yml).
 
 ```bash
 git push origin master

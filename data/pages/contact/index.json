@@ -3,80 +3,78 @@
   "slug": "contact",
   "title": "Contact - Ian Maroney",
   "moduleGroups": [{
+    "title": "Contact Details",
+    "modules": [{
+      "type": "content-blocks",
+      "hero": true,
       "title": "Contact Details",
-      "modules": [{
-        "type": "content-blocks",
-        "hero": true,
-        "title": "Contact Details",
-        "heading": "How to reach me",
-        "blockSize": "_12 xs_6 md_3",
-        "blocks": [{
-          "title": "Home",
-          "heading": "Home",
-          "content": "<address>Rochester, NY</adddress>"
-        }, {
-          "title": "Phone",
-          "heading": "Phone",
-          "content": "<p><a href='tel:+17162083808'>(716) 208-3808</a></p>"
-        }, {
-          "title": "Email",
-          "heading": "Email",
-          "content": "<p><a href='#form'>Down there 👇</a></p>"
-        }, {
-          "title": "Work",
-          "heading": "Work",
-          "content": "<p><a href='https://truthcollective.com' target='_blank' rel='noopener noreferrer'>Truth Collective</a></p>"
-        }]
+      "heading": "How to reach me",
+      "blockSize": "_12 xs_6 md_3",
+      "blocks": [{
+        "title": "Home",
+        "heading": "Home",
+        "content": "<address>Rochester, NY</adddress>"
+      }, {
+        "title": "Phone",
+        "heading": "Phone",
+        "content": "<p><a href='tel:+17162083808'>(716) 208-3808</a></p>"
+      }, {
+        "title": "Email",
+        "heading": "Email",
+        "content": "<p><a href='#form'>Down there 👇</a></p>"
+      }, {
+        "title": "Work",
+        "heading": "Work",
+        "content": "<p><a href='https://truthcollective.com' target='_blank' rel='noopener noreferrer'>Truth Collective</a></p>"
       }]
-    }, {
+    }]
+  }, {
+    "title": "Form",
+    "modules": [{
+      "type": "form",
+      "hero": true,
       "title": "Form",
-      "modules": [{
-        "type": "form",
-        "hero": true,
-        "title": "Form",
-        "heading": "Drop me a line",
-        "content": "<p>Want to chat? Looking for a little more detail? Want to tell me how boring my website is? Fill out the form below and I’ll get back to you soon.</p>",
-        "fields": [{
-            "title": "Name",
-            "type": "text",
-            "size": "_12 md_6",
-            "attributes": {
-              "maxLength": {
-                "value": 128,
-                "message": "Name must be 128 characters or less."
-              },
-              "required": "A name is required."
-            }
-          }, {
-            "title": "Email",
-            "type": "email",
-            "size": "_12 md_6",
-            "attributes": {
-              "maxLength": {
-                "value": 128,
-                "message": "Email address must be 128 characters or less."
-              },
-              "required":  "An email address is required."
-            }
-          }, {
-            "title": "Message",
-            "type": "textarea",
-            "size": "_12",
-            "attributes": {
-              "required":  "A message is required.",
-              "rows": 6
-            }
-          }],
-          "success": {
-            "heading": "Message sent",
-            "content": "<p>Thanks for the message, I’ll be in touch soon!</p>"
+      "heading": "Drop me a line",
+      "content": "<p>Want to chat? Looking for a little more detail? Want to tell me how boring my website is? Fill out the form below and I’ll get back to you soon.</p>",
+      "fields": [{
+        "title": "Name",
+        "type": "text",
+        "size": "_12 md_6",
+        "attributes": {
+          "maxLength": {
+            "value": 128,
+            "message": "Name must be 128 characters or less."
           },
-          "error": {
-            "heading": "Oops!",
-            "content": "<p>Sorry about that. Something went wrong when sending your message. <small>I swear it wasn’t my fault.</small></p>"
-          }
+          "required": "A name is required."
         }
-      ]
-    }
-  ]
+      }, {
+        "title": "Email",
+        "type": "email",
+        "size": "_12 md_6",
+        "attributes": {
+          "maxLength": {
+            "value": 128,
+            "message": "Email address must be 128 characters or less."
+          },
+          "required":  "An email address is required."
+        }
+      }, {
+        "title": "Message",
+        "type": "textarea",
+        "size": "_12",
+        "attributes": {
+          "required":  "A message is required.",
+          "rows": 6
+        }
+      }],
+      "success": {
+        "heading": "Message sent",
+        "content": "<p>Thanks for the message, I’ll be in touch soon!</p>"
+      },
+      "error": {
+        "heading": "Oops!",
+        "content": "<p>Sorry about that. Something went wrong when sending your message. <small>I swear it wasn’t my fault.</small></p>"
+      }
+    }]
+  }]
 }

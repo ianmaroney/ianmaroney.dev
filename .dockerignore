@@ -1,0 +1,41 @@
+# docker
+Dockerfile
+.dockerignore
+
+# npm
+node_modules
+npm-debug.log
+
+# next
+.next
+out
+
+# git
+.git
+.github
+
+# tests
+tests
+jest.config.js
+coverage
+
+# misc
+.DS_Store
+*.pem
+README.md
+
+# local env files
+.env*
+!.env.local
+
+# vercel
+.vercel
+
+# backup
+._BACKUP_*
+
+# junk drawer
+resources
+
+# docker - (local preview of export)
+/docker-compose.yml

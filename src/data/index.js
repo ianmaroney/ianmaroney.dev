@@ -27,6 +27,7 @@ export async function getData (pageSlug, hasExtras = false) {
       globals,
       page,
       menus
-    }
+    },
+    revalidate: 60 * 1
   }
 }

@@ -5,8 +5,12 @@ module.exports = {
     '<rootDir>/node_modules/'
   ],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest'
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
+  transformIgnorePatterns: [
+    '/node_modules/',
+    '^.+\\.module\\.(css|sass|scss)$',
+  ],
   moduleNameMapper: {
     '^@/config': '<rootDir>/next.config.js',
     '^@/data': '<rootDir>/src/data',

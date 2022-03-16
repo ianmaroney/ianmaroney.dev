@@ -11,8 +11,7 @@ beforeAll(async () => {
 describe('Pages render', () => {
   it('/ - Home', async () => {
     const { render } = await getPage({
-      route: '/',
-      useDocument: true
+      route: '/'
     })
 
     render()
@@ -21,8 +20,7 @@ describe('Pages render', () => {
 
   it('/experience - Experience', async () => {
     const { render } = await getPage({
-      route: '/experience',
-      useDocument: true
+      route: '/experience'
     })
 
     render()
@@ -31,8 +29,7 @@ describe('Pages render', () => {
 
   it('/works - Works', async () => {
     const { render } = await getPage({
-      route: '/works',
-      useDocument: true
+      route: '/works'
     })
 
     render()
@@ -41,8 +38,7 @@ describe('Pages render', () => {
 
   it('/contact - Contact', async () => {
     const { render } = await getPage({
-      route: '/contact',
-      useDocument: true
+      route: '/contact'
     })
 
     render()

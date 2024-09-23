@@ -53,7 +53,7 @@ jobs:
         run: npm install
 
       - name: Run export
-        run: npm run export
+        run: NODE_OPTIONS=--openssl-legacy-provider npm run export
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1

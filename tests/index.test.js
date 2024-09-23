@@ -12,7 +12,7 @@ describe('Pages render', () => {
   it('/ - Home', async () => {
     const { render } = await getPage({
       route: '/',
-      useDocument: true
+      // useDocument: true
     })
 
     render()
@@ -22,7 +22,7 @@ describe('Pages render', () => {
   it('/experience - Experience', async () => {
     const { render } = await getPage({
       route: '/experience',
-      useDocument: true
+      // useDocument: true
     })
 
     render()
@@ -32,7 +32,7 @@ describe('Pages render', () => {
   it('/works - Works', async () => {
     const { render } = await getPage({
       route: '/works',
-      useDocument: true
+      // useDocument: true
     })
 
     render()
@@ -42,7 +42,7 @@ describe('Pages render', () => {
   it('/contact - Contact', async () => {
     const { render } = await getPage({
       route: '/contact',
-      useDocument: true
+      // useDocument: true
     })
 
     render()

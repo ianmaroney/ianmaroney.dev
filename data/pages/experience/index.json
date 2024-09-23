@@ -37,7 +37,7 @@
       }, {
         "title": "DevOps and Hosting",
         "heading": "DevOps & hosting",
-        "content": "<ul class='none soft'><li>Amazon Web Services</li><li>Docker</li><li>MediaTemple</li>"
+        "content": "<ul class='none soft'><li>Amazon Web Services</li><li>Docker</li><li>Terraform</li>"
       }, {
         "title": "SaaS-y platforms",
         "heading": "SaaS-y platforms",

@@ -1,9 +1,18 @@
 {
   "history": [{
+    "company": "Flynn Agency, LLC",
+    "role": "Development Manager",
+    "start": "2022-06-12",
+    "end": "2024-09-23",
+    "current": false,
+    "location": "Rochester, NY",
+    "content": "<ul><li>Development and maintenance of client web properties.</li><li>Management and oversight of development talent.</li><li>Scoping, and estimation of web projects.</li><li>Management of hosting infrastructure.</li></ul>"
+  }, {
     "company": "Truth Collective, LLC",
     "role": "Creative Technologist",
     "start": "2016-10-31",
-    "current": true,
+    "end": "2022-06-10",
+    "current": false,
     "location": "Rochester, NY",
     "content": "<ul><li>Concepting, scoping, and execution of digital experiences.</li><li>Sourcing, hiring, and oversight of development talent.</li><li>Provisioning, management, and cost-analysis of DevOps infrastructure.</li></ul>"
   }, {

@@ -9,7 +9,7 @@
       "hero": true,
       "title": "Contact Details",
       "heading": "How to reach me",
-      "blockSize": "_12 xs_6 md_3",
+      "blockSize": "_12 sm_4",
       "blocks": [{
         "title": "Home",
         "heading": "Home",
@@ -22,10 +22,6 @@
         "title": "Email",
         "heading": "Email",
         "content": "<p><a href='#form'>Down there 👇</a></p>"
-      }, {
-        "title": "Work",
-        "heading": "Work",
-        "content": "<p><a href='https://truthcollective.com' target='_blank' rel='noopener noreferrer'>Truth Collective</a></p>"
       }]
     }]
   }, {
